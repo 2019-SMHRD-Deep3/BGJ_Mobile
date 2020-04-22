@@ -23,6 +23,7 @@ public class Firstpage extends AppCompatActivity {
         CntRun cntRun = new CntRun();
         Thread thread1 = new Thread(cntRun);
         thread1.start();
+//        ff
 
 
     }
