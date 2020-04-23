@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.a3thproject.R;
 import com.example.a3thproject.fragment.Fragment_booklistAll;
+import com.example.a3thproject.fragment.Fragment_booklistMy;
 
 public class myBookshelf extends AppCompatActivity {
 
@@ -39,7 +40,9 @@ public class myBookshelf extends AppCompatActivity {
         shelfMy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Fragment_booklistMy fragment_booklistmy = new Fragment_booklistMy();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.bookShelf_list,fragment_booklistmy).commit();
             }
         });
     }
