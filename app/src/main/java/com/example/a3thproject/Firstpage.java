@@ -1,16 +1,15 @@
 package com.example.a3thproject;
 
-import androidx.annotation.UiThread;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Firstpage extends AppCompatActivity {
     ImageView img1;
@@ -78,7 +77,7 @@ public class Firstpage extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.splash_out_top,R.anim.splash_in_down);
                 finish();

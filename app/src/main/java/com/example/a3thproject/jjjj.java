@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,6 +34,47 @@ public class jjjj extends AppCompatActivity {
    StringRequest request;
    String id;
 
+    public class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... strings){
+            if(requestQueue == null){
+                requestQueue = Volley.newRequestQueue(getApplicationContext());
+            }
+
+            join.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    testJson();
+
+                }
+            });
+
+            return true;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean s) {
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Boolean s) {
+            super.onCancelled(s);
+        }
+    }
+
 
 
     @Override
@@ -43,24 +85,27 @@ public class jjjj extends AppCompatActivity {
         text = findViewById(R.id.text);
         pw = findViewById(R.id.pw);
         join = findViewById(R.id.join);
-        if(requestQueue == null){
-            requestQueue = Volley.newRequestQueue(getApplicationContext());
-        }
 
-        join.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        MyAsyncTask asyncTask = new MyAsyncTask();
+        asyncTask.execute();
 
-                testJson();
-
-            }
-        });
-
+//        if(requestQueue == null){
+//            requestQueue = Volley.newRequestQueue(getApplicationContext());
+//        }
+//
+//        join.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                testJson();
+//
+//            }
+//        });
 
     }
 
     public void testJson(){
-        String url = "http://192.168.56.1:8081/Podo/Loginserice";
+        String url = "http://172.30.1.19:8081/Podo/Loginserice";
 
 
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
