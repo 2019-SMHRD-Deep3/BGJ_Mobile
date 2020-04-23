@@ -1,9 +1,11 @@
-package com.example.a3thproject;
+package com.example.a3thproject.mainOption;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.example.a3thproject.R;
 
 public class mJoinActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.a3thproject;
+package com.example.a3thproject.mainOption;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
+
+import com.example.a3thproject.R;
 
 public class Firstpage extends AppCompatActivity {
 

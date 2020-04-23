@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".myBookshelf">
+        <activity android:name=".mainOption.myBookshelf">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Firstpage" />
-        <activity android:name=".mJoinActivity" />
-        <activity android:name=".MenuActivity"/>
+        <activity android:name=".mainOption.Firstpage" />
+        <activity android:name=".mainOption.mJoinActivity" />
+        <activity android:name=".mainOption.MenuActivity"/>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".mainOption.MainActivity"/>
     </application>
 
 </manifest>

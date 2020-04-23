@@ -1,4 +1,4 @@
-package com.example.a3thproject;
+package com.example.a3thproject.mainOption;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.example.a3thproject.R;
 
 public class MenuActivity extends AppCompatActivity {
 
