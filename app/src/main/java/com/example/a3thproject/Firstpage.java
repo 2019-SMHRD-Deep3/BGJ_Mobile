@@ -1,5 +1,6 @@
 package com.example.a3thproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,9 @@ public class Firstpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstpage);
+        // 타이틀 메뉴 감추기
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         text = findViewById(R.id.title);
 
