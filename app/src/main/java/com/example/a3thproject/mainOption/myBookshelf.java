@@ -6,16 +6,42 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.a3thproject.R;
+import com.example.a3thproject.fragment.Fragment_booklistAll;
 
 public class myBookshelf extends AppCompatActivity {
+
+    Button shelfAll, shelfMy;
+    FrameLayout bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bookshelf);
+
+        shelfAll = findViewById(R.id.bookShelf_all);
+        shelfMy = findViewById(R.id.bookShelf_my);
+
+        shelfAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment_booklistAll fragment_booklistAll = new Fragment_booklistAll();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.bookShelf_list,fragment_booklistAll).commit();
+            }
+        });
+
+        shelfMy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
     // 메뉴 객체 사용연결
     @Override
