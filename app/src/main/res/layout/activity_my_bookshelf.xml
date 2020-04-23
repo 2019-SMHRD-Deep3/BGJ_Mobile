@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F4BCBC"
-    tools:context=".mainOption.myBookshelf">
+    tools:context=".myBookshelf">
 
     <Button
         android:id="@+id/bookShelf_all"

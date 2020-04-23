@@ -1,4 +1,4 @@
-package com.example.a3thproject.mainOption;
+package com.example.a3thproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -22,6 +22,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Intent intent = getIntent();
+
+
     }
 
     // 메뉴 객체 사용연결

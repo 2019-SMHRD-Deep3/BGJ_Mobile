@@ -1,4 +1,4 @@
-package com.example.a3thproject.mainOption;
+package com.example.a3thproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
