@@ -1,5 +1,6 @@
 package com.example.a3thproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,14 +18,14 @@ public class Firstpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstpage);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         text = findViewById(R.id.title);
 
         CntRun cntRun = new CntRun();
         Thread thread1 = new Thread(cntRun);
         thread1.start();
-//        ff
-
 
     }
 
@@ -34,33 +35,23 @@ public class Firstpage extends AppCompatActivity {
         public void run() {
             while(isRunning){
                 if(cnt<=1){
-
                     Intent intent = new Intent(Firstpage.this, MenuActivity.class);
                     startActivity(intent);
                     break;
                 }
-
                 try {
                     Thread.sleep(1000);
-
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
                 run_handler.post(new Runnable() {
                     @Override
                     public void run() {
                         --cnt;
-
-
-
                     }
                 });
             }
-
-
         }
     }
-
     Handler run_handler = new Handler();
 }
