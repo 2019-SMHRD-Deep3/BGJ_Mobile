@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".myBookshelf"/>
-        <activity android:name=".mainOption.Firstpage" >
+        <activity android:name=".Firstpage" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mainOption.mJoinActivity" />
+        <activity android:name=".mJoinActivity" />
         <activity android:name=".MenuActivity"/>
-        <activity android:name=".mainOption.MainActivity"/>
+        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>

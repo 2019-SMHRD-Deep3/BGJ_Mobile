@@ -2,6 +2,7 @@ package com.example.a3thproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +25,7 @@ public class myBookshelf extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bookshelf);
+        Intent intent = getIntent();
 
         shelfAll = findViewById(R.id.bookShelf_all);
         shelfMy = findViewById(R.id.bookShelf_my);
@@ -68,4 +70,7 @@ public class myBookshelf extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // intent를 통해 액티비티 전환
+
 }
