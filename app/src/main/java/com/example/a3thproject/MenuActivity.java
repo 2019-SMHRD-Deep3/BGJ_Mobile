@@ -1,6 +1,5 @@
 package com.example.a3thproject;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-
-
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -23,7 +18,6 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
         Intent intent = getIntent();
 
         menu1 = findViewById(R.id.mainMenu1);
@@ -37,8 +31,6 @@ public class MenuActivity extends AppCompatActivity {
                 startActivityForResult(intent,101);
             }
         });
-
-
     }
 
     // 메뉴 객체 사용연결
@@ -55,11 +47,11 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menu1:
-                Toast.makeText(this,"테스트중1",Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.menu2:
-                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
-                return true;
+                Intent goIntent = new Intent(this, LoginActivity.class);
+                startActivity(goIntent);
+//            case R.id.menu2:
+//                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
+//                return true;
         }
         return super.onOptionsItemSelected(item);
     }

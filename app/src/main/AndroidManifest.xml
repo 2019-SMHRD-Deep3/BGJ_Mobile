@@ -17,41 +17,30 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".myBookshelf"/>
-        <activity android:name=".LoginActivity" />
-
-        <activity android:name=".Firstpage"/>
-
-        <activity android:name=".mJoinActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".MainActivity">
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AudioRecorder">
+        <!-- activity 활성화 시, 반드시 주석 뒤에서 줄바꿈해서 사용할 것 -->
+        <activity android:name=".Firstpage"/> <!-- 초기 로딩화면-->
+        <activity android:name=".MenuActivity" /> <!-- 메뉴화면 -->
 
+        <activity android:name=".myBookshelf"/> <!-- 내 서재 -->
 
-        </activity>
-        <activity android:name=".Main4Activity" />
-        <activity android:name=".Main3Activity"></activity>
-        <activity android:name=".jjjj">
+        <activity android:name=".LoginActivity"/> <!-- 로그인 화면 -->
+        <activity android:name=".Main2Activity"/> <!-- 녹음파일 전송 기능 -->
+        <activity android:name=".AudioRecorder"/> <!-- 녹음파일 저장 기능 -->
+        <activity android:name=".mJoinActivity" />
+        <activity android:name=".MainActivity"> <!-- 기능 테스트 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <meta-data
-            android:name="com.kakao.sdk.Appkey"
-            android:value="{NATIVE_APP_KEY}"/>
-        <activity android:name=".Firstpage" />
-        <activity android:name=".mJoinActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".Main2Activity">
+        <activity android:name=".Main3Activity"/> <!-- -->
+        <activity android:name=".Main4Activity" /> <!-- 카메라 사진 저장 -->
 
 
-        </activity>
     </application>
-
+    <meta-data
+        android:name="com.kakao.sdk.Appkey"
+        android:value="{NATIVE_APP_KEY}"/>
 </manifest>

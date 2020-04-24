@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
@@ -36,8 +37,6 @@ public class LoginActivity extends AppCompatActivity {
     Button join;
     static RequestQueue requestQueue;
     StringRequest request;
-   StringRequest request;
-   String id;
 
     public class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
 
@@ -50,12 +49,9 @@ public class LoginActivity extends AppCompatActivity {
             join.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     testJson();
-
                 }
             });
-
             return true;
         }
 
@@ -63,17 +59,14 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
         }
-
         @Override
         protected void onPostExecute(Boolean s) {
             super.onPostExecute(s);
         }
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
         }
-
         @Override
         protected void onCancelled(Boolean s) {
             super.onCancelled(s);
@@ -138,7 +131,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
                     } else {
-                        Toast.makeText(LoginActivity.this, "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this,
+                                "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -172,11 +166,11 @@ public class LoginActivity extends AppCompatActivity {
 
         if (data.equals("true")){
             Log.v("son",data);
-
-            Intent intent = new Intent(jjjj.this, MenuActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
         }else{
-            Toast.makeText(jjjj.this, "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,
+                    "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
         }
 
     }

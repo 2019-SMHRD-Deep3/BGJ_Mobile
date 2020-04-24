@@ -38,18 +38,18 @@ public class MainActivity extends AppCompatActivity {
         Join = findViewById(R.id.btn_M_Join);
 
         // 카카오 SDK 테스트
-        KakaoSDK.init(new KakaoAdapter() {
+       // KakaoSDK.init(new KakaoAdapter() {
 
-            @Override
-            public IApplicationConfig getApplicationConfig() {
-                return new IApplicationConfig() {
-                    @Override
-                    public Context getApplicationContext() {
-                        return MainActivity.this;
-                    }
-                };
-            }
-        });
+//            @Override
+//            public IApplicationConfig getApplicationConfig() {
+//                return new IApplicationConfig() {
+//                    @Override
+//                    public Context getApplicationContext() {
+//                        return MainActivity.this;
+//                    }
+//                };
+//            }
+//        });
 
 //        ID.setOnKeyListener(new View.OnKeyListener() {
 //            @Override
