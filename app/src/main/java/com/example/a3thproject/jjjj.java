@@ -105,7 +105,7 @@ public class jjjj extends AppCompatActivity {
     }
 
     public void testJson(){
-        String url = "http://172.30.1.19:8081/Podo/Loginserice";
+        String url = "http://192.168.56.1:8081/Podo/Loginserice";
 
 
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {

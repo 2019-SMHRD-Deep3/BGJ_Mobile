@@ -8,8 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:required="true" />
-
+    android:required="true" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -20,29 +19,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AudioRecorder">
 
-        <activity android:name=".Main4Activity"/>
-        <activity android:name=".Main3Activity" >
 
         </activity>
-        <activity android:name=".AudioRecorder" />
-        <activity android:name=".jjjj" >
-        <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Main4Activity" />
+        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".jjjj">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".Firstpage" />
         <activity android:name=".mJoinActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".Main2Activity">
 
+
         </activity>
-
-
-
-
     </application>
-
 
 </manifest>

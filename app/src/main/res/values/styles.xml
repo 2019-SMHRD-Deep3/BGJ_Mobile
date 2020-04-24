@@ -8,7 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <!-- 프로젝트 타이틀 감추기 -->
-        <item name="windowNoTitle">true</item>
+        <!-- 사용하지 맙시다
+        <item name="windowNoTitle">true</item> -->
 
     </style>
 

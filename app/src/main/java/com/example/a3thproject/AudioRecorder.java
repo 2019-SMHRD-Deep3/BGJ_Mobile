@@ -1,5 +1,7 @@
 package com.example.a3thproject;
 
+
+
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -27,7 +29,7 @@ public class AudioRecorder extends AppCompatActivity {
     private MediaRecorder recorder = null;
 
     private PlayButton   playButton = null;
-    private MediaPlayer player = null;
+    private MediaPlayer   player = null;
 
     // Requesting permission to RECORD_AUDIO
     private boolean permissionToRecordAccepted = false;
@@ -98,6 +100,7 @@ public class AudioRecorder extends AppCompatActivity {
         recorder.release();
         recorder = null;
     }
+
     class RecordButton extends androidx.appcompat.widget.AppCompatButton{
         boolean mStartRecording = true;
 
@@ -147,9 +150,10 @@ public class AudioRecorder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_recorder);
 
+
         // Record to the external cache directory for visibility
         fileName = getExternalCacheDir().getAbsolutePath();
-        fileName += "내장 메모리/Android/AudioRecordTest.mp3";
+        fileName += "/AudioRecordTest.mp3";
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
@@ -182,5 +186,10 @@ public class AudioRecorder extends AppCompatActivity {
             player = null;
         }
     }
-}
 
+    public void serverplay(){
+        FileUploadUtils f = new FileUploadUtils();
+
+
+    }
+}

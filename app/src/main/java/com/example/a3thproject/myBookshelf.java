@@ -1,5 +1,6 @@
 package com.example.a3thproject;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,39 +9,45 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import com.example.a3thproject.R;
+import com.example.a3thproject.fragment.Fragment_booklistAll;
+import com.example.a3thproject.fragment.Fragment_booklistMy;
 
+public class myBookshelf extends AppCompatActivity {
 
-
-
-public class MenuActivity extends AppCompatActivity {
-
-    Button menu1, menu2, menu3;
+    Button shelfAll, shelfMy;
+    FrameLayout bookList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-
+        setContentView(R.layout.activity_my_bookshelf);
         Intent intent = getIntent();
 
-        menu1 = findViewById(R.id.mainMenu1);
-        menu2 = findViewById(R.id.mainMenu2);
-        menu3 = findViewById(R.id.mainMenu3);
+        shelfAll = findViewById(R.id.bookShelf_all);
+        shelfMy = findViewById(R.id.bookShelf_my);
 
-        menu3.setOnClickListener(new View.OnClickListener() {
+        shelfAll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
-                startActivityForResult(intent,101);
+                Fragment_booklistAll fragment_booklistAll = new Fragment_booklistAll();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.bookShelf_list,fragment_booklistAll).commit();
             }
         });
 
-
+        shelfMy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment_booklistMy fragment_booklistmy = new Fragment_booklistMy();
+                getSupportFragmentManager().beginTransaction().
+                        replace(R.id.bookShelf_list,fragment_booklistmy).commit();
+            }
+        });
     }
-
     // 메뉴 객체 사용연결
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,4 +70,7 @@ public class MenuActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // intent를 통해 액티비티 전환
+
 }
