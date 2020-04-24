@@ -36,6 +36,50 @@ public class LoginActivity extends AppCompatActivity {
     Button join;
     static RequestQueue requestQueue;
     StringRequest request;
+   StringRequest request;
+   String id;
+
+    public class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... strings){
+            if(requestQueue == null){
+                requestQueue = Volley.newRequestQueue(getApplicationContext());
+            }
+
+            join.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    testJson();
+
+                }
+            });
+
+            return true;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Boolean s) {
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onCancelled(Boolean s) {
+            super.onCancelled(s);
+        }
+    }
+
 
 
     @Override
@@ -60,29 +104,56 @@ public class LoginActivity extends AppCompatActivity {
                 testJson();
             }
         });
+
+        MyAsyncTask asyncTask = new MyAsyncTask();
+        asyncTask.execute();
+
+//        if(requestQueue == null){
+//            requestQueue = Volley.newRequestQueue(getApplicationContext());
+//        }
+//
+//        join.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                testJson();
+//
+//            }
+//        });
+
     }
 
     public void testJson(){
         String url = "http://192.168.56.1:8081/Podo/Loginserice";
+
+
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean error = jObj.getBoolean("error");
+
                     if (!error) {
+
+
                     } else {
                         Toast.makeText(LoginActivity.this, "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
                 println(response);
+
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+
             }
+
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -92,18 +163,22 @@ public class LoginActivity extends AppCompatActivity {
                 return params;
             }
         };
+
         request.setShouldCache(false);
         requestQueue.add(request);
     }
 
     public void println(String data){
+
         if (data.equals("true")){
             Log.v("son",data);
-            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
+            Intent intent = new Intent(jjjj.this, MenuActivity.class);
             startActivity(intent);
         }else{
-            Toast.makeText(LoginActivity.this, "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(jjjj.this, "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
         }
+
     }
     // 해시 키 수집 코드
     private void getAppKeyHash() {

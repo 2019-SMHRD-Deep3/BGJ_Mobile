@@ -1,22 +1,19 @@
 package com.example.a3thproject;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.a3thproject.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+
+
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -26,6 +23,7 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         Intent intent = getIntent();
 
         menu1 = findViewById(R.id.mainMenu1);
@@ -39,6 +37,7 @@ public class MenuActivity extends AppCompatActivity {
                 startActivityForResult(intent,101);
             }
         });
+
 
     }
 

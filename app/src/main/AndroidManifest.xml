@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.a3thproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,15 +26,32 @@
         <activity android:name=".mJoinActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".AudioRecorder">
+
+
+        </activity>
+        <activity android:name=".Main4Activity" />
+        <activity android:name=".Main3Activity"></activity>
+        <activity android:name=".jjjj">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <meta-data
             android:name="com.kakao.sdk.Appkey"
             android:value="{NATIVE_APP_KEY}"/>
+        <activity android:name=".Firstpage" />
+        <activity android:name=".mJoinActivity" />
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".Main2Activity">
+
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,18 +1,16 @@
 package com.example.a3thproject;
 
-import androidx.annotation.UiThread;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.TextView;
-// 삭제되었던 내용
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.UiThread;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Firstpage extends AppCompatActivity {
     ImageView img1;
@@ -20,24 +18,27 @@ public class Firstpage extends AppCompatActivity {
     Boolean isRunning = true;
     int cnt = 3;
     Thread splashTread;
+
     Animation animation_text;
     Animation animation_img;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstpage);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         text = findViewById(R.id.title);
         img1 = findViewById(R.id.img1);
         splashAnmation();
+
 //        CntRun cntRun = new CntRun();
 //        Thread thread1 = new Thread(cntRun);
 //        thread1.start();
 
+
     }
+
 
     @UiThread
     private void splashAnmation() {
@@ -58,10 +59,13 @@ public class Firstpage extends AppCompatActivity {
                         sleep(100);
                         waited += 100;
                     }
+
                 } catch (InterruptedException e) {
                     // do nothing
                 } finally {
+
                 }
+
             }
         };
         splashTread.start();
@@ -74,7 +78,7 @@ public class Firstpage extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
                 startActivity(intent);
                 overridePendingTransition(R.anim.splash_out_top,R.anim.splash_in_down);
                 finish();
@@ -89,29 +93,46 @@ public class Firstpage extends AppCompatActivity {
 
     }
 
+
+
+
+
+
     public class CntRun implements Runnable{
 
         @Override
         public void run() {
             while(isRunning){
                 if(cnt<=1){
+
                     Intent intent = new Intent(Firstpage.this, MenuActivity.class);
                     startActivity(intent);
                     break;
                 }
+
                 try {
                     Thread.sleep(1000);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+
                 run_handler.post(new Runnable() {
                     @Override
                     public void run() {
                         --cnt;
+
+
+
                     }
                 });
             }
+
+
         }
+
     }
     Handler run_handler = new Handler();
+
+
 }

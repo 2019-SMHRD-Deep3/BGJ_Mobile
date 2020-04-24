@@ -1,11 +1,8 @@
 package com.example.a3thproject;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.view.WindowManager;
 
-import com.example.a3thproject.R;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class mJoinActivity extends AppCompatActivity {
 
