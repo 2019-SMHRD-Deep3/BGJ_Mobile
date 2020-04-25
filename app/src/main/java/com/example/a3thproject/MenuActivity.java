@@ -7,12 +7,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
     Button menu1, menu2, menu3;
+    ImageView img1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,15 @@ public class MenuActivity extends AppCompatActivity {
         menu1 = findViewById(R.id.mainMenu1);
         menu2 = findViewById(R.id.mainMenu2);
         menu3 = findViewById(R.id.mainMenu3);
+        img1 = findViewById(R.id.img1);
+
+        img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
+                startActivityForResult(intent,101);
+            }
+        });
 
         menu3.setOnClickListener(new View.OnClickListener() {
             @Override
