@@ -1,14 +1,19 @@
 package com.example.a3thproject;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -22,17 +27,16 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class jjjj extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    EditText text;
-    EditText pw;
+    EditText id,pw;
     Button join;
     static RequestQueue requestQueue;
-   StringRequest request;
-   String id;
+    StringRequest request;
 
     public class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
 
@@ -45,12 +49,9 @@ public class jjjj extends AppCompatActivity {
             join.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     testJson();
-
                 }
             });
-
             return true;
         }
 
@@ -58,17 +59,14 @@ public class jjjj extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
         }
-
         @Override
         protected void onPostExecute(Boolean s) {
             super.onPostExecute(s);
         }
-
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
         }
-
         @Override
         protected void onCancelled(Boolean s) {
             super.onCancelled(s);
@@ -81,10 +79,24 @@ public class jjjj extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jjjj);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
-        text = findViewById(R.id.text);
+        getAppKeyHash();
+
+        id = findViewById(R.id.text);
         pw = findViewById(R.id.pw);
         join = findViewById(R.id.join);
+        if(requestQueue == null){
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testJson();
+            }
+        });
 
         MyAsyncTask asyncTask = new MyAsyncTask();
         asyncTask.execute();
@@ -120,9 +132,8 @@ public class jjjj extends AppCompatActivity {
 
 
                     } else {
-
-                        Toast.makeText(jjjj.this, "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
-
+                        Toast.makeText(LoginActivity.this,
+                                "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -142,7 +153,7 @@ public class jjjj extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("id", text.getText().toString());
+                params.put("id", id.getText().toString());
                 params.put("pw", pw.getText().toString());
                 return params;
             }
@@ -156,12 +167,29 @@ public class jjjj extends AppCompatActivity {
 
         if (data.equals("true")){
             Log.v("son",data);
-
-            Intent intent = new Intent(jjjj.this, MenuActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
             startActivity(intent);
         }else{
-            Toast.makeText(jjjj.this, "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this,
+                    "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
         }
 
+    }
+    // 해시 키 수집 코드
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(),
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.e("Hash key", something);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            Log.e("name not found", e.toString());
+        }
     }
 }

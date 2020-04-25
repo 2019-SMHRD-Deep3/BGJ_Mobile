@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu1"
-        android:title="내 책장"
-        app:showAsAction="never"
+        android:title="로그인"
+        app:showAsAction="always"
         ></item>
-    <item
+    <!--<item
         android:id="@+id/menu2"
         android:title="설정"
         app:showAsAction="never"
-        ></item>
+        ></item>-->
 </menu>

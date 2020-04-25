@@ -64,9 +64,9 @@ public class myBookshelf extends AppCompatActivity {
             case R.id.menu1:
                 Toast.makeText(this,"테스트중1",Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.menu2:
-                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
-                return true;
+//            case R.id.menu2:
+//                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
+//                return true;
         }
         return super.onOptionsItemSelected(item);
     }
