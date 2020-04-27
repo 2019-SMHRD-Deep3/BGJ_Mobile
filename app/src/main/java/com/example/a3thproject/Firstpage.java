@@ -9,12 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.UiThread;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Firstpage extends AppCompatActivity {
     ImageView img1;
-    TextView text;
+    //TextView text;
     Boolean isRunning = true;
     int cnt = 3;
     Thread splashTread;
@@ -28,7 +27,7 @@ public class Firstpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstpage);
 
-        text = findViewById(R.id.title);
+       // text = findViewById(R.id.title);
         img1 = findViewById(R.id.img1);
         splashAnmation();
 
@@ -44,7 +43,7 @@ public class Firstpage extends AppCompatActivity {
     private void splashAnmation() {
         animation_text = AnimationUtils.loadAnimation(this,R.anim.splash_textview);
         //animation_text.reset();
-        text.startAnimation(animation_text);
+        //text.startAnimation(animation_text);
         animation_img = AnimationUtils.loadAnimation(this, R.anim.splash_imageview);
         //animation_img.reset();
         img1.startAnimation(animation_img);
