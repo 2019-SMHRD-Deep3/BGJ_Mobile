@@ -1,12 +1,8 @@
 package com.example.a3thproject;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,25 +23,22 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText id,pw;
-    Button join;
+    Button join, info;
     static RequestQueue requestQueue;
     StringRequest request;
 
     public class MyAsyncTask extends AsyncTask<Void, Integer, Boolean> {
-
         @Override
         protected Boolean doInBackground(Void... strings){
             if(requestQueue == null){
                 requestQueue = Volley.newRequestQueue(getApplicationContext());
             }
-
             join.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -73,20 +66,20 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jjjj);
+        setContentView(R.layout.activity_login);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        getAppKeyHash();
+        //getAppKeyHash();
 
         id = findViewById(R.id.text);
         pw = findViewById(R.id.pw);
-        join = findViewById(R.id.join);
+        join = findViewById(R.id.logins);
+        info = findViewById(R.id.uInfo);
+
         if(requestQueue == null){
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
@@ -95,6 +88,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 testJson();
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, mJoinActivity.class);
+                startActivityForResult(intent,101);
             }
         });
 
@@ -128,26 +129,19 @@ public class LoginActivity extends AppCompatActivity {
                     boolean error = jObj.getBoolean("error");
 
                     if (!error) {
-
-
                     } else {
                         Toast.makeText(LoginActivity.this,
                                 "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 println(response);
-
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
             }
-
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -157,13 +151,11 @@ public class LoginActivity extends AppCompatActivity {
                 return params;
             }
         };
-
         request.setShouldCache(false);
         requestQueue.add(request);
     }
 
     public void println(String data){
-
         if (data.equals("true")){
             Log.v("son",data);
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
@@ -172,23 +164,22 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(LoginActivity.this,
                     "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
         }
-
     }
-    // 해시 키 수집 코드
-    private void getAppKeyHash() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(),
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md;
-                md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String something = new String(Base64.encode(md.digest(), 0));
-                Log.e("Hash key", something);
-            }
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            Log.e("name not found", e.toString());
-        }
-    }
+//    // 해시 키 수집 코드
+//    private void getAppKeyHash() {
+//        try {
+//            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(),
+//                    PackageManager.GET_SIGNATURES);
+//            for (Signature signature : info.signatures) {
+//                MessageDigest md;
+//                md = MessageDigest.getInstance("SHA");
+//                md.update(signature.toByteArray());
+//                String something = new String(Base64.encode(md.digest(), 0));
+//                Log.e("Hash key", something);
+//            }
+//        } catch (Exception e) {
+//            // TODO Auto-generated catch block
+//            Log.e("name not found", e.toString());
+//        }
+//    }
 }

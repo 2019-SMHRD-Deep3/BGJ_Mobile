@@ -1,2 +1,2 @@
 rootProject.name='3thProject'
-include ':app'
+include ':app', ':naveridlogin_android_sdk_4.2.6', ':naveridlogin_android_sdk_4.2.0'

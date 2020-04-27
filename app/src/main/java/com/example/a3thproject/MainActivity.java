@@ -12,9 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.a3thproject.R;
-import com.kakao.auth.IApplicationConfig;
-import com.kakao.auth.KakaoAdapter;
-import com.kakao.auth.KakaoSDK;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.regex.Pattern;
