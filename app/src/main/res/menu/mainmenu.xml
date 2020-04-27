@@ -4,8 +4,8 @@
     <item
         android:id="@+id/menu1"
         android:title="로그인"
-        app:showAsAction="always"
-        ></item>
+        app:showAsAction="always"/>
+        >
     <!--<item
         android:id="@+id/menu2"
         android:title="설정"

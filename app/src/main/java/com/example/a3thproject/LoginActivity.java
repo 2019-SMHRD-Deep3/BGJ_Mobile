@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Intent intent = getIntent();
         //getAppKeyHash();
 
         id = findViewById(R.id.text);

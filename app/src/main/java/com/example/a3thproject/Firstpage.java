@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.UiThread;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Firstpage extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class Firstpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firstpage);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
        // text = findViewById(R.id.title);
         img1 = findViewById(R.id.img1);
