@@ -7,57 +7,69 @@
     android:background="#A6DCFF"
     tools:context=".MenuActivity">
 
-    <Button
-        android:id="@+id/mainMenu1"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="480dp"
-        android:text="Book_Make"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.915"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/mainMenu2"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="72dp"
-        android:text="Book_serching"
-        app:layout_constraintStart_toStartOf="@+id/mainMenu1"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenu1" />
-
-    <Button
-        android:id="@+id/mainMenu3"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="72dp"
-        android:text="Book_Shelf"
-        app:layout_constraintStart_toStartOf="@+id/mainMenu2"
-        app:layout_constraintTop_toBottomOf="@+id/mainMenu2" />
-
     <ImageView
-        android:id="@+id/img1"
+        android:id="@+id/menu2"
         android:layout_width="153dp"
         android:layout_height="77dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.114"
+        app:layout_constraintVertical_bias="0.464"
         app:srcCompat="@drawable/camera6" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/fff"
         android:layout_width="230dp"
         android:layout_height="59dp"
         android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="@+id/img1"
+        app:layout_constraintEnd_toEndOf="@+id/menu2"
         app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/img1"
-        app:layout_constraintTop_toTopOf="@+id/img1"
+        app:layout_constraintStart_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="@+id/menu2"
         app:srcCompat="@drawable/img3433" />
+
+    <ImageView
+        android:id="@+id/menu1"
+        android:layout_width="179dp"
+        android:layout_height="175dp"
+        android:layout_marginBottom="64dp"
+        app:layout_constraintBottom_toTopOf="@+id/menu2"
+        app:layout_constraintEnd_toEndOf="@+id/menu2"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="@+id/menu2"
+        app:srcCompat="@drawable/book" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="291dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="160dp"
+        app:layout_constraintEnd_toEndOf="@+id/menu1"
+        app:layout_constraintStart_toStartOf="@+id/menu1"
+        app:layout_constraintTop_toTopOf="@+id/menu1"
+        app:srcCompat="@drawable/text1" />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="51dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="@+id/menu2"
+        app:layout_constraintStart_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toBottomOf="@+id/menu2"
+        app:srcCompat="@drawable/mic" />
+
+    <ImageView
+        android:id="@+id/gg"
+        android:layout_width="309dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="@+id/img3"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/img3"
+        app:layout_constraintTop_toTopOf="@+id/img3"
+        app:srcCompat="@drawable/text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

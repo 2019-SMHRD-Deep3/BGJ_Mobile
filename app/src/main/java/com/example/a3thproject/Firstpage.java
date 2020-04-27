@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +27,7 @@ public class Firstpage extends AppCompatActivity {
         setContentView(R.layout.activity_firstpage);
 
        // text = findViewById(R.id.title);
-        img1 = findViewById(R.id.img1);
+        img1 = findViewById(R.id.menu2);
         splashAnmation();
 
 //        CntRun cntRun = new CntRun();

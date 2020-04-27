@@ -6,15 +6,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button menu1, menu2, menu3;
-    ImageView img1;
+    ImageView menu1, menu2, menu3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +20,11 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         Intent intent = getIntent();
 
-        menu1 = findViewById(R.id.mainMenu1);
-        menu2 = findViewById(R.id.mainMenu2);
-        menu3 = findViewById(R.id.mainMenu3);
-        img1 = findViewById(R.id.img1);
+        menu1 = findViewById(R.id.menu1);
+        menu2 = findViewById(R.id.menu2);
+        menu3 = findViewById(R.id.img3);
 
-        img1.setOnClickListener(new View.OnClickListener() {
+        menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
@@ -35,17 +32,28 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        menu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, Main5Activity.class);
+                startActivityForResult(intent,101);
+            }
+        });
+
+
+
+
         menu3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
+                Intent intent = new Intent(MenuActivity.this, AudioRecorder.class);
                 startActivityForResult(intent,101);
             }
         });
     }
 
     // 메뉴 객체 사용연결
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.mainmenu,menu);
@@ -65,5 +73,5 @@ public class MenuActivity extends AppCompatActivity {
 //                return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }
