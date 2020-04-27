@@ -89,7 +89,7 @@ public class Main5Activity extends AppCompatActivity {
                             //.showVideoMedia()
                             .setPeekHeight(1200)
                             .show(uri -> {
-                                Log.v("pass", "uri: " + uri);
+                                                             Log.v("pass", "uri: " + uri);
                                 Log.v("pass", "uri.getPath(): " + uri.getPath());
 
                                 selectedUri = uri;
@@ -141,28 +141,18 @@ public class Main5Activity extends AppCompatActivity {
                                     Log.v("listuri", uriList.get(i).getPath().toString());
                                     images_uri.add(uriList.get(i));
                                 }
-
                                 Log.v("listuri", String.valueOf(images_uri));
                                 showUriList(uriList);
-
                             });
-
-
                 }
-
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
                     Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
                 }
-
             };
-
             checkPermission(permissionlistener);
-
         });
-
     }
-
 
     private void setRxSingleShowButton() {
 
@@ -188,18 +178,13 @@ public class Main5Activity extends AppCompatActivity {
                                         .load(uri)
                                         .into(iv_image);
                             }, Throwable::printStackTrace);
-
-
                 }
 
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
                     Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
                 }
-
-
             };
-
             checkPermission(permissionlistener);
         });
     }
@@ -212,7 +197,6 @@ public class Main5Activity extends AppCompatActivity {
             PermissionListener permissionlistener = new PermissionListener() {
                 @Override
                 public void onPermissionGranted() {
-
                     multiImageDisposable = TedRxBottomPicker.with(Main5Activity.this)
                             //.setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
                             .setPeekHeight(1600)
@@ -225,21 +209,15 @@ public class Main5Activity extends AppCompatActivity {
                                 selectedUriList = uris;
                                 showUriList(uris);
                             }, Throwable::printStackTrace);
-
-
                 }
 
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
                     Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
                 }
-
-
             };
-
             checkPermission(permissionlistener);
         });
-
     }
 
     private void checkPermission(PermissionListener permissionlistener) {
@@ -254,7 +232,6 @@ public class Main5Activity extends AppCompatActivity {
         // Remove all views before
         // adding the new ones.
         mSelectedImagesContainer.removeAllViews();
-
         iv_image.setVisibility(View.GONE);
         mSelectedImagesContainer.setVisibility(View.VISIBLE);
 
@@ -263,10 +240,8 @@ public class Main5Activity extends AppCompatActivity {
 
 
         for (Uri uri : uriList) {
-
             View imageHolder = LayoutInflater.from(this).inflate(R.layout.image_item, null);
             ImageView thumbnail = imageHolder.findViewById(R.id.media_image);
-
             requestManager
                     .load(uri.toString())
                     .apply(new RequestOptions().fitCenter())
@@ -275,9 +250,7 @@ public class Main5Activity extends AppCompatActivity {
             mSelectedImagesContainer.addView(imageHolder);
 
             thumbnail.setLayoutParams(new FrameLayout.LayoutParams(widthPixel, heightPixel));
-
         }
-
     }
 
     @Override
@@ -290,7 +263,6 @@ public class Main5Activity extends AppCompatActivity {
             multiImageDisposable.dispose();
         }
         super.onDestroy();
-
     }
 
 }

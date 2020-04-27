@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -30,13 +31,11 @@ public class MenuActivity extends AppCompatActivity {
 
         intent = getIntent();
         Pop = findViewById(R.id.btnOP);
-        img1 = findViewById(R.id.img1);
         menu1 = findViewById(R.id.menu1);
         menu2 = findViewById(R.id.menu2);
         menu3 = findViewById(R.id.img3);
 
         // 뷰 선택
-        img1.setOnClickListener(new View.OnClickListener() {
         menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +51,6 @@ public class MenuActivity extends AppCompatActivity {
                 startActivityForResult(intent,101);
             }
         });
-
-
-
 
         menu3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,5 +110,5 @@ public class MenuActivity extends AppCompatActivity {
         });
         popup.show();
     }
-    }*/
+
 }
