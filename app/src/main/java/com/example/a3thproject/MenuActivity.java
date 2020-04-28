@@ -2,6 +2,7 @@ package com.example.a3thproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -13,33 +14,45 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button menu1, menu2, menu3;
-    ImageView img1;
+
+    ImageView menu1, menu2, menu3;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
         Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
-        menu1 = findViewById(R.id.mainMenu1);
-        menu2 = findViewById(R.id.mainMenu2);
-        menu3 = findViewById(R.id.mainMenu3);
-        img1 = findViewById(R.id.img1);
+        menu1 = findViewById(R.id.menu1);
+        menu2 = findViewById(R.id.menu2);
+        menu3 = findViewById(R.id.img3);
 
-        img1.setOnClickListener(new View.OnClickListener() {
+
+        menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
+
+            }
+        });
+
+
+        menu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, Main5Activity.class);
+                intent.putExtra("id",id);
                 startActivityForResult(intent,101);
+
             }
         });
 
         menu3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
-                startActivityForResult(intent,101);
+
             }
         });
     }

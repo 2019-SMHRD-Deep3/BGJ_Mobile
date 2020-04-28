@@ -39,7 +39,7 @@ public class Main5Activity extends AppCompatActivity {
     private ViewGroup mSelectedImagesContainer;
     private RequestManager requestManager;
     private ArrayList<Uri> images_uri;
-
+    String id;
     private  Button btn_server;
 
 
@@ -47,6 +47,9 @@ public class Main5Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
+
+        Intent intent = getIntent();
+        id = intent.getStringExtra("id");
 
         iv_image = findViewById(R.id.iv_image);
         mSelectedImagesContainer = findViewById(R.id.selected_photos_container);
@@ -69,6 +72,7 @@ public class Main5Activity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
                 intent.putExtra("imagelist", images_uri);
+                intent.putExtra("id",id);
                 startActivity(intent);
 
             }
