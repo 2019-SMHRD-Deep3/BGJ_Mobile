@@ -40,7 +40,6 @@ public class Firstpage extends AppCompatActivity {
 
     }
 
-
     @UiThread
     private void splashAnmation() {
         animation_text = AnimationUtils.loadAnimation(this,R.anim.splash_textview);
@@ -94,11 +93,6 @@ public class Firstpage extends AppCompatActivity {
 
     }
 
-
-
-
-
-
     public class CntRun implements Runnable{
 
         @Override
@@ -122,18 +116,11 @@ public class Firstpage extends AppCompatActivity {
                     @Override
                     public void run() {
                         --cnt;
-
-
-
                     }
                 });
             }
-
-
         }
-
     }
     Handler run_handler = new Handler();
-
 
 }
