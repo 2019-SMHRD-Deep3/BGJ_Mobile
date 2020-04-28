@@ -7,7 +7,7 @@
     android:background="#A6DCFF"
     tools:context=".MenuActivity">
 
-        <ImageView
+    <ImageView
         android:id="@+id/menu2"
         android:layout_width="153dp"
         android:layout_height="77dp"
@@ -83,45 +83,5 @@
         app:layout_constraintHorizontal_bias="0.929"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/menu1"
-        android:layout_width="179dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/book" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="291dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/menu1"
-        app:srcCompat="@drawable/text1" />
-
-    <ImageView
-        android:id="@+id/img3"
-        android:layout_width="51dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fff"
-        app:srcCompat="@drawable/mic" />
-
-    <ImageView
-        android:id="@+id/gg"
-        android:layout_width="309dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="104dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img3"
-        app:srcCompat="@drawable/text2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

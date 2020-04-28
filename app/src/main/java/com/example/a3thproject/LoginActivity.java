@@ -88,8 +88,8 @@ public class LoginActivity extends AppCompatActivity {
         join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testJson();
-            }
+               testJson();
+        }
         });
 
         info.setOnClickListener(new View.OnClickListener() {
