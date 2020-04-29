@@ -5,9 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:required="true" />
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -18,25 +16,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Bookitem"/>
         <!-- activity 활성화 시, 반드시 주석 뒤에서 줄바꿈해서 사용할 것 -->
-        <activity android:name=".Firstpage"/> <!-- 초기 로딩화면 -->
-
-        <activity android:name=".MenuActivity" /> <!-- 메뉴화면 -->
-        <activity android:name=".myBookshelf" > <!-- 내 서재 -->
+        <activity android:name=".Firstpage"><!-- 초기 로딩화면-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" /> <!-- 로그인 화면 -->
-        <activity android:name=".Main2Activity" /> <!-- 녹음파일 전송 기능 -->
-        <activity android:name=".AudioRecorder" /> <!-- 녹음파일 저장 기능 -->
-        <activity android:name=".MainActivity" /> <!-- 기능 테스트 -->
-        <activity android:name=".Main5Activity" />
-        <activity android:name=".Main6Activity" />
-        <activity android:name=".mJoinActivity" />
+        <activity android:name=".MenuActivity" /> <!-- 메뉴화면 -->
+        <activity android:name=".myBookshelf"/> <!-- 내 서재 -->
+        <activity android:name=".LoginActivity"/> <!-- 로그인 화면 -->
+        <activity android:name=".Main2Activity"/> <!-- 녹음파일 전송 기능 -->
+        <activity android:name=".AudioRecorder"/> <!-- 녹음파일 저장 기능 -->
+        <activity android:name=".mJoinActivity"/>
+        <activity android:name=".MainActivity"/> <!-- 기능 테스트 -->
+        <activity android:name=".Main5Activity"/>
+        <activity android:name=".Main6Activity"/>
+
     </application>
 
 </manifest>
