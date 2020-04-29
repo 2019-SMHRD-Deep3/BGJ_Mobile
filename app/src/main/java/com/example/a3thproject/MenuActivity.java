@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -10,12 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -31,6 +30,12 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+
+
+
+
+
 
         intent = getIntent();
         id = intent.getStringExtra("id");
