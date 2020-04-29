@@ -161,6 +161,7 @@ public class LoginActivity extends AppCompatActivity {
         if (data.equals("true")){
             Log.v("son",data);
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+
             startActivity(intent);
         }else{
             Toast.makeText(LoginActivity.this,
