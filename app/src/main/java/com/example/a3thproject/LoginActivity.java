@@ -158,10 +158,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void println(String data){
-        if (data.equals("true")){
+        if (!data.equals("false")){
             Log.v("son",data);
             Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-
+            intent.putExtra("id",data);
             startActivity(intent);
         }else{
             Toast.makeText(LoginActivity.this,

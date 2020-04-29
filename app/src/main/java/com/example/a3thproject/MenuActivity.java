@@ -3,6 +3,7 @@ package com.example.a3thproject;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,8 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-    Button Pop;
+
     ImageView menu1, menu2, menu3;
+    String id;
+    Button Pop;
     Intent intent;
 
     @Override
@@ -35,12 +38,15 @@ public class MenuActivity extends AppCompatActivity {
 
 
         intent = getIntent();
+        id = intent.getStringExtra("id");
+
         Pop = findViewById(R.id.btnOP);
         menu1 = findViewById(R.id.menu1);
         menu2 = findViewById(R.id.menu2);
         menu3 = findViewById(R.id.img3);
+        //img1 = findViewById(R.id.img1);
 
-        // 뷰 선택
+
         menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +59,9 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, Main5Activity.class);
+                intent.putExtra("id",id);
                 startActivityForResult(intent,101);
+
             }
         });
 
