@@ -31,7 +31,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 return swingPage2;
 
             default:
-                return null;//ㅇㅇㅇ
+                return null;
 
         }
 
