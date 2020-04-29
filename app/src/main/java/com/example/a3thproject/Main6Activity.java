@@ -27,7 +27,7 @@ public class Main6Activity extends AppCompatActivity {
     Button button6 = null;
     private final int REQ_CODE_SELECT_IMAGE = 100;
     private String img_path = "";
-    private String serverURL = "http://172.30.1.9:8081/Podo/Audio?id=";  //<<서버주소
+    private String serverURL = "http://172.30.1.17:8081/Podo/Audio?id=";  //<<서버주소
     private Bitmap image_bitmap_copy = null;
     private Bitmap image_bitmap = null;
     private String imageName = null;
@@ -66,7 +66,7 @@ public class Main6Activity extends AppCompatActivity {
                 }
 
 
-        //serverURL = "http://172.30.1.9:8081/Podo/GoogleVisionApiTester";
+        //serverURL = "http://172.30.1.17:8081/Podo/GoogleVisionApiTester";
       /*          if(i == images_uri.size()){
                     DoFileUpload(serverURL);
                     Toast.makeText(getApplicationContext(), "이미지 전송 성공", Toast.LENGTH_SHORT).show();
@@ -74,7 +74,7 @@ public class Main6Activity extends AppCompatActivity {
                 }*/
 
        // Intent intent = new Intent();
-       // Uri uri = Uri.parse("http://172.30.1.9:8081/Podo/GoogleVisionApiTester");
+       // Uri uri = Uri.parse("http://172.30.1.17:8081/Podo/GoogleVisionApiTester");
         //intent.setData(uri);
     }
 

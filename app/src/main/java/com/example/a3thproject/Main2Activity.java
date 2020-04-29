@@ -100,7 +100,7 @@ public class Main2Activity extends AppCompatActivity {
 
         /************* Php script path ****************/
 
-        upLoadServerUri = "http://172.30.1.19:8081/Podo/Audio";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://172.30.1.17:8081/Podo/Audio";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
 

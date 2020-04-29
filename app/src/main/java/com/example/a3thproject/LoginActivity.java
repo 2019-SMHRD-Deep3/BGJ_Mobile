@@ -119,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void testJson(){
-        String url = "http://172.30.1.9:8081/Podo/Loginserice";
+        String url = "http://172.30.1.17:8081/Podo/Loginserice";
 
 
 
