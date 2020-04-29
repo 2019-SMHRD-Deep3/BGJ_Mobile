@@ -7,50 +7,46 @@
     android:background="#F4BCBC"
     tools:context=".myBookshelf">
 
-    <Button
-        android:id="@+id/bookShelf_all"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="전체"
-        app:layout_constraintEnd_toStartOf="@+id/bookShelf_my"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/bookShelf_my"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나만의 동화"
-        app:layout_constraintBottom_toBottomOf="@+id/bookShelf_all"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/bookShelf_all" />
-
-    <FrameLayout
-        android:id="@+id/bookShelf_list"
-        android:layout_width="392dp"
-        android:layout_height="462dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="#FAF8F8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookShelf_all">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-    </FrameLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전체" />
 
-    <TextView
-        android:id="@+id/textView"
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="내 책장" />
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="#B59AF3"
-        android:text=" 내 서재"
-        android:textSize="35sp"
-        android:textStyle="bold"
+        android:layout_height="62dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vBook"
+        android:layout_width="409dp"
+        android:layout_height="547dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

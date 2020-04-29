@@ -121,8 +121,6 @@ public class LoginActivity extends AppCompatActivity {
     public void testJson(){
         String url = "http://192.168.56.1:8081/Podo/Loginserice";
 
-
-
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

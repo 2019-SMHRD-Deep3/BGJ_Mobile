@@ -21,11 +21,11 @@ buildscript {
         // in the individual module build.gradle files
 
         // 네아로 test
-        implementation project(path: ':naverLogin4.2.6')
-        implementation 'com.android.support:appcompat-v7:28.0.0'
-        implementation 'com.android.support:support-core-utils:28.0.0'
-        implementation 'com.android.support:customtabs:28.0.0'
-        implementation 'com.android.support:support-v4:28.0.0'
+//        implementation project(path: ':naverLogin4.2.6')
+//        implementation 'com.android.support:appcompat-v7:28.0.0'
+//        implementation 'com.android.support:support-core-utils:28.0.0'
+//        implementation 'com.android.support:customtabs:28.0.0'
+//        implementation 'com.android.support:support-v4:28.0.0'
     }
 
 }

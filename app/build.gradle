@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
@@ -33,11 +33,11 @@ android {
 
 dependencies {
     // 네아로 적용test
-    implementation project(path: ':naverLogin4.2.6')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:support-core-utils:28.0.0'
-    implementation 'com.android.support:customtabs:28.0.0'
-    implementation 'com.android.support:support-v4:28.0.0'
+//    implementation project(path: ':naverLogin4.2.6')
+//    implementation 'com.android.support:appcompat-v7:28.0.0'
+//    implementation 'com.android.support:support-core-utils:28.0.0'
+//    implementation 'com.android.support:customtabs:28.0.0'
+//    implementation 'com.android.support:support-v4:28.0.0'
 
     implementation 'com.squareup.okhttp3:okhttp:3.8.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -51,9 +51,10 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
     implementation "io.reactivex.rxjava2:rxjava:2.2.6"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.annotation:annotation:1.0.2'
     implementation project(':tedbottompicker')
+    implementation 'me.relex:circleindicator:1.2.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
