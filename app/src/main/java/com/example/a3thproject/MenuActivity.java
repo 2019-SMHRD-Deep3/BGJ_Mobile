@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity {
 
-
     ImageView menu1, menu2, menu3;
     String id;
     Button Pop;
@@ -30,12 +29,6 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
-
-
-
-
-
 
         intent = getIntent();
         id = intent.getStringExtra("id");
@@ -97,7 +90,7 @@ public class MenuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // 일단 테스트
+    // 메뉴 이벤트 사용
     public void mpop(View v){
         // 팝업 메뉴 객체 생성
         PopupMenu popup = new PopupMenu(this, v);

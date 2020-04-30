@@ -4,61 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0FFFFFFF"
+    android:background="#0F07ADCA"
     tools:context=".MenuActivity">
+
+    <!-- 툴바 관련 코드 (Start) -->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="411dp"
+        android:layout_height="72dp"
+        android:background="@drawable/toolbar2"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/btnOP"
+        android:layout_width="24dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/menuicon"
+        android:onClick="mpop"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.44" />
+
+    <!-- 툴바 관련 코드 (End) -->
 
     <ImageView
         android:id="@+id/menu2"
         android:layout_width="153dp"
         android:layout_height="77dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/camera6" />
 
     <ImageView
         android:id="@+id/fff"
         android:layout_width="230dp"
         android:layout_height="59dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="@+id/menu2"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/menu2"
-        app:layout_constraintTop_toTopOf="@+id/menu2"
+        android:layout_marginTop="114dp"
+        app:layout_constraintEnd_toEndOf="@+id/img3"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/img3"
+        app:layout_constraintTop_toTopOf="@+id/img3"
         app:srcCompat="@drawable/namantext" />
-
-    <Button
-        android:id="@+id/btnOP"
-        android:layout_width="24dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/menuicon"
-
-        android:onClick="mpop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/menu1"
         android:layout_width="168dp"
         android:layout_height="157dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1"
         app:srcCompat="@drawable/chch" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="291dp"
         android:layout_height="52dp"
-        android:layout_marginTop="162dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="156dp"
+        app:layout_constraintEnd_toEndOf="@+id/menu1"
+        app:layout_constraintStart_toStartOf="@+id/menu1"
         app:layout_constraintTop_toTopOf="@+id/menu1"
         app:srcCompat="@drawable/dongtext" />
 
@@ -66,45 +90,21 @@
         android:id="@+id/img3"
         android:layout_width="51dp"
         android:layout_height="124dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fff"
+        app:layout_constraintTop_toBottomOf="@+id/gg"
         app:srcCompat="@drawable/mic" />
 
     <ImageView
         android:id="@+id/gg"
-        android:layout_width="301dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="108dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/img3"
+        android:layout_width="311dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="@+id/menu2"
+        app:layout_constraintStart_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="@+id/menu2"
         app:srcCompat="@drawable/voicetext" />
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar1"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:background="@drawable/toolbar2"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="66dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="152dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
-        app:layout_constraintEnd_toStartOf="@+id/btnOP"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
