@@ -8,7 +8,6 @@
     tools:context=".MenuActivity">
 
     <!-- 툴바 관련 코드 (Start) -->
-
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
         android:layout_width="411dp"

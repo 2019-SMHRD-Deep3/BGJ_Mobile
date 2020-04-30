@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class myBookshelf extends AppCompatActivity {
 
     TabLayout tab;
     ViewPager bookList;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class myBookshelf extends AppCompatActivity {
         setContentView(R.layout.activity_my_bookshelf);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        Intent intent = getIntent();
+        intent = getIntent();
 
         tab = findViewById(R.id.tabLayout);
         bookList = findViewById(R.id.vBook);
@@ -63,54 +65,56 @@ public class myBookshelf extends AppCompatActivity {
 
             }
         });
-
-        // <!-- 해당 선 아래는 사용하지 않는 코드 --!>
-//        [
-//        shelfAll = findViewById(R.id.bookShelf_all);
-//        shelfMy = findViewById(R.id.bookShelf_my);
-//        userName = findViewById(R.id.textView);
-//
-//        shelfAll.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment_booklistAll fragment_booklistAll = new Fragment_booklistAll();
-//                getSupportFragmentManager().beginTransaction().
-//                        replace(R.id.bookShelf_list,fragment_booklistAll).commit();
-//            }
-//        });
-//
-//        shelfMy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Fragment_booklistMy fragment_booklistmy = new Fragment_booklistMy();
-//                getSupportFragmentManager().beginTransaction().
-//                        replace(R.id.bookShelf_list,fragment_booklistmy).commit();
-//            }
-//        });]
     }
-//    // 메뉴 객체 사용연결
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.mainmenu,menu);
-//        // return은 반드시 true로 줄 것
-//        return true;
-//    }
-//
-//    // 메뉴 객체 이벤트
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.menu1:
-//                Toast.makeText(this,"테스트중1",Toast.LENGTH_SHORT).show();
-//                return true;
-////            case R.id.menu2:
-////                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
-////                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
-    // intent를 통해 액티비티 전환
+    // 메뉴 객체 사용연결
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu,menu);
+        // return은 반드시 true로 줄 것
+        return true;
+    }
+
+    // 메뉴 객체 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu1:
+                Intent goIntent = new Intent(this, LoginActivity.class);
+                startActivity(goIntent);
+//            case R.id.menu2:
+//                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
+//                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // 메뉴 이벤트 사용
+    public void mpop(View v){
+        // 팝업 메뉴 객체 생성
+        PopupMenu popup = new PopupMenu(this, v);
+        // XML 파일에 정의해둔 메뉴 전개자 선언
+        MenuInflater inflater = popup.getMenuInflater();
+        Menu menu = popup.getMenu();
+        // XML의 메뉴 가져오기
+        inflater.inflate(R.menu.popmenu, menu);
+        // 메뉴 안에서 클릭이벤트 발생시 처리
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch(item.getItemId()){
+                    case R.id.login:
+                        intent = new Intent(v.getContext(), LoginActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+
+                return false;
+            }
+        });
+        popup.show();
+    }
 
 }
