@@ -4,6 +4,7 @@ package com.example.a3thproject;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,8 @@ import androidx.core.app.ActivityCompat;
 import java.io.IOException;
 
 public class AudioRecorder extends AppCompatActivity {
+
+    Button gigi;
 
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -171,6 +175,12 @@ public class AudioRecorder extends AppCompatActivity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         0));
         setContentView(ll);
+
+        gigi = findViewById(R.id.GGGG);
+
+        Main2Activity jj = new Main2Activity();
+
+
     }
 
     @Override

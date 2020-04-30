@@ -100,7 +100,7 @@ public class Main2Activity extends AppCompatActivity {
 
         /************* Php script path ****************/
 
-        upLoadServerUri = "http://172.30.1.17:8081/Podo/Audio";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://172.30.1.9:8081/Podo/Camera";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
@@ -108,15 +108,15 @@ public class Main2Activity extends AppCompatActivity {
 
             public void onClick(View v) {
                 dialog = ProgressDialog.show(Main2Activity.this, "", "Uploading file...", true);
-                new Thread(new Runnable() {
+                                new Thread(new Runnable() {
 
-                    public void run() {
+                                    public void run() {
 
-                        runOnUiThread(new Runnable() {
+                                        runOnUiThread(new Runnable() {
 
-                            public void run() {
+                                            public void run() {
 
-                                messageText.setText("uploading started.....");
+                                                messageText.setText("uploading started.....");
 
                             }
 

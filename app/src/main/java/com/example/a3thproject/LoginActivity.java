@@ -103,18 +103,6 @@ public class LoginActivity extends AppCompatActivity {
         MyAsyncTask asyncTask = new MyAsyncTask();
         asyncTask.execute();
 
-//        if(requestQueue == null){
-//            requestQueue = Volley.newRequestQueue(getApplicationContext());
-//        }
-//
-//        join.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                testJson();
-//
-//            }
-//        });
 
     }
 

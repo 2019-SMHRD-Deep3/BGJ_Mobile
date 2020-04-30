@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class Main5Activity extends AppCompatActivity {
     private  Button btn_server;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class Main5Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+
 
         iv_image = findViewById(R.id.iv_image);
         mSelectedImagesContainer = findViewById(R.id.selected_photos_container);
@@ -60,6 +63,8 @@ public class Main5Activity extends AppCompatActivity {
         setRxMultiShowButton();
 
         setServerButton();
+
+
 
     }
 
@@ -82,42 +87,16 @@ public class Main5Activity extends AppCompatActivity {
     private void setSingleShowButton() {
 
         Button btnSingleShow = findViewById(R.id.btn_single_show);
-        btnSingleShow.setOnClickListener(view -> {
-            PermissionListener permissionlistener = new PermissionListener() {
-                @Override
-                public void onPermissionGranted() {
+        btnSingleShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    TedBottomPicker.with(Main5Activity.this)
-                            //.setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
-                            .setSelectedUri(selectedUri)
-                            //.showVideoMedia()
-                            .setPeekHeight(1200)
-                            .show(uri -> {
-                                                             Log.v("pass", "uri: " + uri);
-                                Log.v("pass", "uri.getPath(): " + uri.getPath());
-
-                                selectedUri = uri;
-
-                                iv_image.setVisibility(View.VISIBLE);
-                                mSelectedImagesContainer.setVisibility(View.GONE);
-
-                                requestManager
-                                        .load(uri)
-                                        .into(iv_image);
-                            });
-
-
-                }
-
-                @Override
-                public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                    Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-                }
-
-
-            };
-
-            checkPermission(permissionlistener);
+                ComponentName compName = new ComponentName("com.sec.android.app.camera", "com.sec.android.app.camera.Camera");
+                Intent intent23 = new Intent(Intent.ACTION_MAIN);
+                intent23.addCategory(Intent.CATEGORY_LAUNCHER);
+                intent23.setComponent(compName);
+                startActivity(intent23);
+            }
         });
     }
 
