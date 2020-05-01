@@ -108,15 +108,15 @@ public class Main2Activity extends AppCompatActivity {
 
             public void onClick(View v) {
                 dialog = ProgressDialog.show(Main2Activity.this, "", "Uploading file...", true);
-                new Thread(new Runnable() {
+                                new Thread(new Runnable() {
 
-                    public void run() {
+                                    public void run() {
 
-                        runOnUiThread(new Runnable() {
+                                        runOnUiThread(new Runnable() {
 
-                            public void run() {
+                                            public void run() {
 
-                                messageText.setText("uploading started.....");
+                                                messageText.setText("uploading started.....");
 
                             }
 

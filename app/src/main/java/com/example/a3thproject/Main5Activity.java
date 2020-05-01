@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 import android.Manifest;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -43,23 +45,29 @@ public class Main5Activity extends AppCompatActivity {
     private  Button btn_server;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+
 
         iv_image = findViewById(R.id.iv_image);
         mSelectedImagesContainer = findViewById(R.id.selected_photos_container);
         requestManager = Glide.with(this);
         setSingleShowButton();
         setMultiShowButton();
-        setRxSingleShowButton();
-        setRxMultiShowButton();
+        //setRxSingleShowButton();
+       // setRxMultiShowButton();
 
         setServerButton();
+
+
 
     }
 
@@ -81,50 +89,24 @@ public class Main5Activity extends AppCompatActivity {
 
     private void setSingleShowButton() {
 
-        Button btnSingleShow = findViewById(R.id.btn_single_show);
-        btnSingleShow.setOnClickListener(view -> {
-            PermissionListener permissionlistener = new PermissionListener() {
-                @Override
-                public void onPermissionGranted() {
+        ImageView btnSingleShow = findViewById(R.id.btn_single_show);
+        btnSingleShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-                    TedBottomPicker.with(Main5Activity.this)
-                            //.setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
-                            .setSelectedUri(selectedUri)
-                            //.showVideoMedia()
-                            .setPeekHeight(1200)
-                            .show(uri -> {
-                                                             Log.v("pass", "uri: " + uri);
-                                Log.v("pass", "uri.getPath(): " + uri.getPath());
-
-                                selectedUri = uri;
-
-                                iv_image.setVisibility(View.VISIBLE);
-                                mSelectedImagesContainer.setVisibility(View.GONE);
-
-                                requestManager
-                                        .load(uri)
-                                        .into(iv_image);
-                            });
-
-
-                }
-
-                @Override
-                public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                    Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
-                }
-
-
-            };
-
-            checkPermission(permissionlistener);
+                ComponentName compName = new ComponentName("com.sec.android.app.camera", "com.sec.android.app.camera.Camera");
+                Intent intent23 = new Intent(Intent.ACTION_MAIN);
+                intent23.addCategory(Intent.CATEGORY_LAUNCHER);
+                intent23.setComponent(compName);
+                startActivity(intent23);
+            }
         });
     }
 
     private void setMultiShowButton() {
 
-        Button btnMultiShow = findViewById(R.id.btn_multi_show);
-        btnMultiShow.setOnClickListener(view -> {
+        ImageView choice = findViewById(R.id.choiceimg);
+        choice.setOnClickListener(view -> {
 
             PermissionListener permissionlistener = new PermissionListener() {
                 @Override
@@ -158,7 +140,7 @@ public class Main5Activity extends AppCompatActivity {
         });
     }
 
-    private void setRxSingleShowButton() {
+    /*private void setRxSingleShowButton() {
 
         Button btnSingleShow = findViewById(R.id.btn_rx_single_show);
         btnSingleShow.setOnClickListener(view -> {
@@ -222,7 +204,7 @@ public class Main5Activity extends AppCompatActivity {
             };
             checkPermission(permissionlistener);
         });
-    }
+    }*/
 
     private void checkPermission(PermissionListener permissionlistener) {
         TedPermission.with(Main5Activity.this)

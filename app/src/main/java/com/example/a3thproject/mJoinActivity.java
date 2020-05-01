@@ -30,6 +30,9 @@ public class mJoinActivity extends AppCompatActivity {
 
     EditText id, pw, name, email;
     Button btn;
+    Button btn2;
+
+
     static RequestQueue requestQueue;
     StringRequest request;
 
@@ -80,12 +83,30 @@ public class mJoinActivity extends AppCompatActivity {
         pw = findViewById(R.id.pw);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
-        btn = findViewById(R.id.btn);
+        btn = findViewById(R.id.btnjoin);
+        btn2 = findViewById(R.id.btncancle);
 
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                testJson();
+
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mJoinActivity.this,  MenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         MyAsyncTask asyncTask = new MyAsyncTask();
         asyncTask.execute();
@@ -133,18 +154,18 @@ public class mJoinActivity extends AppCompatActivity {
     }
 
     public void println(String data){
-        if (data.equals("true")){
-            Log.v("son",data);
-            Intent intent = new Intent(mJoinActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(mJoinActivity.this,
-                    "회원가입 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
-        }
+        //if (data.equals("true")){
+        Log.v("son",data);
+        // Intent intent = new Intent(mJoinActivity.this, LoginActivity.class);
+        //startActivity(intent);
+        //}else{
+        //Toast.makeText(mJoinActivity.this,
+        //       "회원가입 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+     }
     }
 
 
 
 
 
-    }
+

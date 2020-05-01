@@ -4,19 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0F07ADCA"
+    android:background="#0FFFFFFF"
     tools:context=".MenuActivity">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <!-- 툴바 관련 코드 (Start) -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
-        android:layout_width="411dp"
+        android:layout_width="0dp"
         android:layout_height="72dp"
         android:background="@drawable/toolbar2"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -31,15 +43,18 @@
 
     <Button
         android:id="@+id/btnOP"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="24dp"
-        android:layout_height="52dp"
+        android:layout_height="47dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/menuicon"
         android:onClick="mpop"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/toolbar1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.64" />
 
     <!-- 툴바 관련 코드 (End) -->
 
@@ -47,28 +62,30 @@
         android:id="@+id/menu2"
         android:layout_width="153dp"
         android:layout_height="77dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/fff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/img3"
+        app:layout_constraintVertical_bias="0.457"
+        app:srcCompat="@drawable/camera" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="500dp"
+        android:layout_height="307dp"
+        android:background="#EDE3FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:srcCompat="@drawable/camera6" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 
-    <ImageView
-        android:id="@+id/fff"
-        android:layout_width="230dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="76dp"
-        app:layout_constraintEnd_toEndOf="@+id/menu2"
-        app:layout_constraintStart_toStartOf="@+id/menu2"
-        app:layout_constraintTop_toTopOf="@+id/menu2"
-        app:srcCompat="@drawable/namantext" />
 
     <ImageView
         android:id="@+id/menu1"
         android:layout_width="168dp"
         android:layout_height="157dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar1"
         app:srcCompat="@drawable/chch" />
@@ -85,21 +102,35 @@
 
     <ImageView
         android:id="@+id/img3"
-        android:layout_width="51dp"
-        android:layout_height="124dp"
+        android:layout_width="70dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fff"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:srcCompat="@drawable/mic" />
 
     <ImageView
-        android:id="@+id/gg"
-        android:layout_width="311dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="114dp"
+        android:id="@+id/fff"
+        android:layout_width="198dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="128dp"
         app:layout_constraintEnd_toEndOf="@+id/img3"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/img3"
         app:layout_constraintTop_toTopOf="@+id/img3"
         app:srcCompat="@drawable/voicetext" />
+
+    <ImageView
+        android:id="@+id/gg"
+        android:layout_width="198dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="@+id/menu2"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="@+id/menu2"
+        app:layout_constraintTop_toTopOf="@+id/menu2"
+        app:srcCompat="@drawable/naman" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
