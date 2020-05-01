@@ -22,7 +22,7 @@
         android:id="@+id/pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
         android:ems="10"
         android:hint="User PassWord"
         android:inputType="textPassword"
@@ -47,7 +47,7 @@
         android:id="@+id/logins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="116dp"
         android:background="@drawable/et_default_drawable"
         android:text="로그인"
         android:textColor="#FFFFFF"
@@ -64,26 +64,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="66dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="89dp"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/title" />
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/title"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="28dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
 
     <Button
         android:id="@+id/btnOP"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="24dp"
         android:layout_height="52dp"
-        android:layout_marginTop="7dp"
 
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/menuicon"
         android:onClick="mpop"
         app:layout_constraintEnd_toEndOf="parent"

@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +50,8 @@ public class Main5Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main5);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
@@ -59,8 +62,8 @@ public class Main5Activity extends AppCompatActivity {
         requestManager = Glide.with(this);
         setSingleShowButton();
         setMultiShowButton();
-        setRxSingleShowButton();
-        setRxMultiShowButton();
+        //setRxSingleShowButton();
+       // setRxMultiShowButton();
 
         setServerButton();
 
@@ -86,7 +89,7 @@ public class Main5Activity extends AppCompatActivity {
 
     private void setSingleShowButton() {
 
-        Button btnSingleShow = findViewById(R.id.btn_single_show);
+        ImageView btnSingleShow = findViewById(R.id.btn_single_show);
         btnSingleShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,8 +105,8 @@ public class Main5Activity extends AppCompatActivity {
 
     private void setMultiShowButton() {
 
-        Button btnMultiShow = findViewById(R.id.btn_multi_show);
-        btnMultiShow.setOnClickListener(view -> {
+        ImageView choice = findViewById(R.id.choiceimg);
+        choice.setOnClickListener(view -> {
 
             PermissionListener permissionlistener = new PermissionListener() {
                 @Override
@@ -137,7 +140,7 @@ public class Main5Activity extends AppCompatActivity {
         });
     }
 
-    private void setRxSingleShowButton() {
+    /*private void setRxSingleShowButton() {
 
         Button btnSingleShow = findViewById(R.id.btn_rx_single_show);
         btnSingleShow.setOnClickListener(view -> {
@@ -201,7 +204,7 @@ public class Main5Activity extends AppCompatActivity {
             };
             checkPermission(permissionlistener);
         });
-    }
+    }*/
 
     private void checkPermission(PermissionListener permissionlistener) {
         TedPermission.with(Main5Activity.this)

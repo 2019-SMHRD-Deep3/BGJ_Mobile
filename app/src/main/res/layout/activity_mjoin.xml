@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="96dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="128dp"
         android:ems="10"
         android:hint="계정입력"
         android:inputType="textPersonName"
@@ -55,7 +55,7 @@
         android:id="@+id/btnjoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="62dp"
         android:background="@drawable/et_default_drawable"
         android:text="가입"
         android:textColor="#FBFBFB"
@@ -68,7 +68,7 @@
         android:id="@+id/btncancle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="62dp"
         android:background="@drawable/et_default_drawable"
         android:text="취소"
         android:textColor="#FFFDFD"
@@ -87,31 +87,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="65dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="99dp"
-        app:layout_constraintBottom_toTopOf="@+id/id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/toolbar1"
-        app:srcCompat="@drawable/title" />
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
 
     <Button
         android:id="@+id/btnOP"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="24dp"
         android:layout_height="52dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/menuicon"
 
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/menuicon"
         android:onClick="mpop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
