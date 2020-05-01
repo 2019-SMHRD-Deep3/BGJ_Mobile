@@ -69,15 +69,16 @@
         app:layout_constraintVertical_bias="0.457"
         app:srcCompat="@drawable/camera" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="500dp"
         android:layout_height="307dp"
         android:background="#EDE3FF"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
-
 
     <ImageView
         android:id="@+id/menu1"
