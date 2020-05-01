@@ -17,7 +17,8 @@ public class myBookread extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bookread);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);   // 화면 세로고정 코드
+                                                                             //     가로고정 코드 -> SCREEN_ORIENTATION_LANDSCAPE
 
         webView = (WebView) findViewById(R.id.webvw);
 
