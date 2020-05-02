@@ -270,8 +270,9 @@ public class Main5Activity extends AppCompatActivity {
         addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
         addEditText.setPadding(20, 10, 10, 10);
-
+        addEditText.setBackgroundColor(Color.parseColor("#00FFFFFF"));
         addEditText.setTextColor(Color.parseColor("#7A47B0"));
+        addEditText.setPrivateImeOptions("defaultInputmode=korean;");
         addEditText.setTextSize(25);
         addEditText.setHint("동화책 제목을 입력하세요");
         topLL.addView(addEditText);
