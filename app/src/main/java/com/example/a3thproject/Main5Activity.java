@@ -3,16 +3,21 @@ package com.example.a3thproject;
 import android.Manifest;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -33,7 +38,7 @@ import io.reactivex.disposables.Disposable;
 
 public class Main5Activity extends AppCompatActivity {
 
-    private ImageView iv_image;
+    private ImageView iv_image, img;
     private List<Uri> selectedUriList;
     private Uri selectedUri;
     private Disposable singleImageDisposable;
@@ -43,6 +48,7 @@ public class Main5Activity extends AppCompatActivity {
     private ArrayList<Uri> images_uri;
     String id;
     private  Button btn_server;
+    private EditText addEdit;
 
 
 
@@ -55,6 +61,8 @@ public class Main5Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+
+        img = findViewById(R.id.gg);
 
 
         iv_image = findViewById(R.id.iv_image);
@@ -129,7 +137,11 @@ public class Main5Activity extends AppCompatActivity {
                                 }
                                 Log.v("listuri", String.valueOf(images_uri));
                                 showUriList(uriList);
+
+                                Editview("동화책 제목을 입력하세요");
                             });
+
+
                 }
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
@@ -249,6 +261,27 @@ public class Main5Activity extends AppCompatActivity {
             multiImageDisposable.dispose();
         }
         super.onDestroy();
+    }
+
+    public void Editview(String a){
+
+        LinearLayout topLL = (LinearLayout) findViewById(R.id.dynamicArea);
+        EditText addEditText = new EditText(Main5Activity.this);
+        addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        addEditText.setPadding(20, 10, 10, 10);
+
+        addEditText.setTextColor(Color.parseColor("#7A47B0"));
+        addEditText.setTextSize(25);
+        addEditText.setHint("동화책 제목을 입력하세요");
+        topLL.addView(addEditText);
+
+
+
+
+
+
+
     }
 
 }
