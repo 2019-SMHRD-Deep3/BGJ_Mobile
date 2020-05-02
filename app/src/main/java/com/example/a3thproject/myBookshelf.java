@@ -24,10 +24,6 @@ import com.google.android.material.tabs.TabLayout;
 
 public class myBookshelf extends AppCompatActivity {
 
-//    Button shelfAll, shelfMy;
-//    TextView userName;
-//    FrameLayout bookList;
-
     TabLayout tab;
     ViewPager bookList;
     Intent intent;
