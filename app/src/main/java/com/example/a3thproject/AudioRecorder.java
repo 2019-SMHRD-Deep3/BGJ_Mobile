@@ -1,7 +1,5 @@
 package com.example.a3thproject;
 
-
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -22,17 +20,17 @@ import androidx.core.app.ActivityCompat;
 import java.io.IOException;
 
 public class AudioRecorder extends AppCompatActivity {
+    boolean mStartRecording = true;
+    boolean mStartPlaying = true;
 
-    Button gigi;
+    Button record, play, gigi;
 
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
     private static String fileName = null;
 
-    private RecordButton recordButton = null;
     private MediaRecorder recorder = null;
 
-    private PlayButton   playButton = null;
     private MediaPlayer   player = null;
 
     // Requesting permission to RECORD_AUDIO
@@ -48,7 +46,6 @@ public class AudioRecorder extends AppCompatActivity {
                 break;
         }
         if (!permissionToRecordAccepted ) finish();
-
     }
 
     private void onRecord(boolean start) {
@@ -105,55 +102,10 @@ public class AudioRecorder extends AppCompatActivity {
         recorder = null;
     }
 
-    class RecordButton extends androidx.appcompat.widget.AppCompatButton{
-        boolean mStartRecording = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                onRecord(mStartRecording);
-                if (mStartRecording) {
-                    setText("Stop recording");
-                } else {
-                    setText("Start recording");
-                }
-                mStartRecording = !mStartRecording;
-            }
-        };
-
-        public RecordButton(Context ctx) {
-            super(ctx);
-            setText("Start recording");
-            setOnClickListener(clicker);
-        }
-    }
-
-    class PlayButton extends androidx.appcompat.widget.AppCompatButton {
-        boolean mStartPlaying = true;
-
-        OnClickListener clicker = new OnClickListener() {
-            public void onClick(View v) {
-                onPlay(mStartPlaying);
-                if (mStartPlaying) {
-                    setText("Stop playing");
-                } else {
-                    setText("Start playing");
-                }
-                mStartPlaying = !mStartPlaying;
-            }
-        };
-
-        public PlayButton(Context ctx) {
-            super(ctx);
-            setText("Start playing");
-            setOnClickListener(clicker);
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_recorder);
-
 
         // Record to the external cache directory for visibility
         fileName = getExternalCacheDir().getAbsolutePath();
@@ -161,24 +113,37 @@ public class AudioRecorder extends AppCompatActivity {
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        LinearLayout ll = new LinearLayout(this);
-        recordButton = new RecordButton(this);
-        ll.addView(recordButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
-        playButton = new PlayButton(this);
-        ll.addView(playButton,
-                new LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        0));
-        setContentView(ll);
-
         gigi = findViewById(R.id.GGGG);
 
         Main2Activity jj = new Main2Activity();
+
+        // 녹음기능
+        record = findViewById(R.id.btnRecord);
+        record.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onRecord(mStartRecording);
+                if (mStartRecording) {
+                    record.setText("Stop recording");
+                } else {
+                    record.setText("Start recording");
+                }
+                mStartRecording = !mStartRecording;
+            }
+        });
+
+        // 재생기능
+        play = findViewById(R.id.btnPlay);
+        play.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onPlay(mStartPlaying);
+                if (mStartPlaying) {
+                    play.setText("Stop playing");
+                } else {
+                    play.setText("Start playing");
+                }
+                mStartPlaying = !mStartPlaying;
+            }
+        });
 
 
     }
@@ -199,7 +164,22 @@ public class AudioRecorder extends AppCompatActivity {
 
     public void serverplay(){
         FileUploadUtils f = new FileUploadUtils();
-
-
     }
+
+    //사용하지 않는 코드
+
+//        LinearLayout ll = new LinearLayout(this);
+//        recordButton = new RecordButton(this);
+//        ll.addView(recordButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
+//        playButton = new PlayButton(this);
+//        ll.addView(playButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
+//        setContentView(ll);
 }

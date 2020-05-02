@@ -7,25 +7,25 @@
     tools:context=".AudioRecorder">
 
     <Button
-        android:id="@+id/btnStart"
+        android:id="@+id/btnRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="192dp"
         android:text="녹음시작"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnStop"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlay"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btnStop"
+        android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="녹음중지"
-        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
+        app:layout_constraintBottom_toBottomOf="@+id/btnRecord"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnStart" />
+        app:layout_constraintStart_toEndOf="@+id/btnRecord" />
 
     <Button
         android:id="@+id/GGGG"
