@@ -113,7 +113,7 @@ public class AudioRecorder extends AppCompatActivity {
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
-        gigi = findViewById(R.id.GGGG);
+        //gigi = findViewById(R.id.GGGG);
 
         Main2Activity jj = new Main2Activity();
 
