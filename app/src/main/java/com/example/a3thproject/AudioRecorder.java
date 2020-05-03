@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -106,6 +107,8 @@ public class AudioRecorder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_recorder);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
         // Record to the external cache directory for visibility
         fileName = getExternalCacheDir().getAbsolutePath();
