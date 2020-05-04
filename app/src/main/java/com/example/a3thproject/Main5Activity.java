@@ -46,10 +46,10 @@ public class Main5Activity extends AppCompatActivity {
     private ViewGroup mSelectedImagesContainer;
     private RequestManager requestManager;
     private ArrayList<Uri> images_uri;
-    String id;
+    String id, title;
     private  Button btn_server;
     private EditText addEdit;
-
+    private  EditText addEditText;
 
 
     @Override
@@ -86,10 +86,15 @@ public class Main5Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                title = addEditText.getText().toString();
                 Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
                 intent.putExtra("imagelist", images_uri);
                 intent.putExtra("id",id);
+                intent.putExtra("title", title);
+
+
                 startActivity(intent);
+
 
             }
         });
@@ -139,15 +144,18 @@ public class Main5Activity extends AppCompatActivity {
                                 showUriList(uriList);
 
                                 Editview("동화책 제목을 입력하세요");
+
                             });
 
 
                 }
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
                     Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
                 }
             };
+
             checkPermission(permissionlistener);
         });
     }
@@ -263,26 +271,21 @@ public class Main5Activity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public void Editview(String a){
+           public void Editview(String a){
 
-        LinearLayout topLL = (LinearLayout) findViewById(R.id.dynamicArea);
-        EditText addEditText = new EditText(Main5Activity.this);
-        addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            LinearLayout topLL = (LinearLayout) findViewById(R.id.dynamicArea);
+            addEditText = new EditText(Main5Activity.this);
+            addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        addEditText.setPadding(20, 10, 10, 10);
-        addEditText.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-        addEditText.setTextColor(Color.parseColor("#7A47B0"));
-        addEditText.setPrivateImeOptions("defaultInputmode=korean;");
-        addEditText.setTextSize(25);
-        addEditText.setHint("동화책 제목을 입력하세요");
-        topLL.addView(addEditText);
-
-
+            addEditText.setPadding(20, 10, 10, 10);
+            addEditText.setBackgroundColor(Color.parseColor("#00FFFFFF"));
+            addEditText.setTextColor(Color.parseColor("#7A47B0"));
+            addEditText.setPrivateImeOptions("defaultInputmode=korean;");
+            addEditText.setTextSize(25);
+            addEditText.setHint("동화책 제목을 입력하세요");
+            topLL.addView(addEditText);
 
 
-
-
-
-    }
+        }
 
 }
