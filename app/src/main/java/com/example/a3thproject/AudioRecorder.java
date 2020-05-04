@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class AudioRecorder extends AppCompatActivity {
     boolean mStartPlaying = true;
 
     Button record, play, gigi;
+    ImageView Rmic, sends, Pnext;
 
     private static final String LOG_TAG = "AudioRecordTest";
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
@@ -121,14 +123,27 @@ public class AudioRecorder extends AppCompatActivity {
         Main2Activity jj = new Main2Activity();
 
         // 녹음기능
-        record = findViewById(R.id.btnRecord);
-        record.setOnClickListener(new View.OnClickListener() {
+//        record = findViewById(R.id.btnRecord);
+//        record.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                onRecord(mStartRecording);
+//                if (mStartRecording) {
+//                    record.setText("Stop recording");
+//                } else {
+//                    record.setText("Start recording");
+//                }
+//                mStartRecording = !mStartRecording;
+//            }
+//        });
+        Rmic = findViewById(R.id.recording);
+        Rmic.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
                 onRecord(mStartRecording);
-                if (mStartRecording) {
-                    record.setText("Stop recording");
-                } else {
-                    record.setText("Start recording");
+                if(mStartRecording){
+                    Rmic.setImageResource(R.drawable.record_recoding);
+                }else{
+                    Rmic.setImageResource(R.drawable.record_ready);
                 }
                 mStartRecording = !mStartRecording;
             }
@@ -148,8 +163,15 @@ public class AudioRecorder extends AppCompatActivity {
             }
         });
 
+        // 전송기능
+        sends = findViewById(R.id.sendBook);
+
+        // 넘기기 기능
+        Pnext = findViewById(R.id.imgNextbook);
+
 
     }
+
 
     @Override
     public void onStop() {

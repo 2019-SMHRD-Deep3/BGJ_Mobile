@@ -84,7 +84,9 @@
         android:id="@+id/menu1"
         android:layout_width="284dp"
         android:layout_height="215dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar1"
         app:srcCompat="@drawable/chch" />
