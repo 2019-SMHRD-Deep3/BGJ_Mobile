@@ -27,11 +27,11 @@ public class Main6Activity extends AppCompatActivity {
     Button button6 = null;
     private final int REQ_CODE_SELECT_IMAGE = 100;
     private String img_path = "";
-    private String serverURL = "http://172.30.1.17:8081/Podo/Audio?id=";  //<<서버주소
+    private String serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id=";  //<<서버주소
     private Bitmap image_bitmap_copy = null;
     private Bitmap image_bitmap = null;
     private String imageName = null;
-    String id;
+    String id, title;
     private ArrayList<Uri> images_uri;
 
 
@@ -43,6 +43,7 @@ public class Main6Activity extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        title = intent.getStringExtra("title");
 
         images_uri = getIntent().getParcelableArrayListExtra("imagelist");
         Log.v("listuri",  String.valueOf(images_uri));
