@@ -21,16 +21,16 @@
 
         <!-- activity 활성화 시, 반드시 주석 뒤에서 줄바꿈해서 사용할 것 -->
         <activity android:name=".Firstpage"> <!-- 초기 로딩화면 -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".myBookread"> <!-- 내 동화책 읽기 -->
 
         </activity>
         <activity android:name=".MenuActivity" > <!-- 메뉴화면 -->
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".myBookshelf" /> <!-- 내 서재 -->
