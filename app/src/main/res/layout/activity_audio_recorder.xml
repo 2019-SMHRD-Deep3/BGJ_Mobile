@@ -4,61 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDE3FF"
     tools:context=".AudioRecorder">
 
     <Button
-        android:id="@+id/btnPlay"
+        android:id="@+id/oPlaying"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
-        android:text="재생"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="OnPlaying"
+        app:layout_constraintBottom_toBottomOf="@+id/oChack"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/oChack" />
+
+    <Button
+        android:id="@+id/oChack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="chackpoint"
+        app:layout_constraintEnd_toStartOf="@+id/oPlaying"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/oRecord"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/oRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="onRecord"
+        app:layout_constraintBottom_toBottomOf="@+id/oChack"
+        app:layout_constraintEnd_toStartOf="@+id/oChack"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tvBooklist"
-        android:layout_width="412dp"
-        android:layout_height="352dp"
+        android:id="@+id/textView2"
+        android:layout_width="410dp"
+        android:layout_height="461dp"
+        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/recording"
-        android:layout_width="162dp"
-        android:layout_height="233dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBooklist"
-        app:layout_constraintVertical_bias="0.241"
-        app:srcCompat="@drawable/record_ready" />
-
-    <ImageView
-        android:id="@+id/imgNextbook"
-        android:layout_width="99dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.74"
-        app:layout_constraintStart_toEndOf="@+id/recording"
-        app:layout_constraintTop_toTopOf="@+id/recording"
-        app:srcCompat="@drawable/nextpage" />
-
-    <ImageView
-        android:id="@+id/sendBook"
-        android:layout_width="98dp"
-        android:layout_height="82dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recording"
-        app:layout_constraintEnd_toEndOf="@+id/imgNextbook"
-        app:layout_constraintTop_toBottomOf="@+id/imgNextbook"
-        app:layout_constraintVertical_bias="0.581"
-        app:srcCompat="@drawable/bookup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
