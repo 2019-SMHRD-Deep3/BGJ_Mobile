@@ -11,78 +11,54 @@
         android:id="@+id/btnPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="304dp"
         android:text="재생"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.643"
+        app:layout_constraintHorizontal_bias="0.845"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvBooklist"
         android:layout_width="412dp"
         android:layout_height="352dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/recording"
         android:layout_width="162dp"
         android:layout_height="233dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBooklist"
-        app:layout_constraintVertical_bias="0.155"
+        app:layout_constraintVertical_bias="0.241"
         app:srcCompat="@drawable/record_ready" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/imgNextbook"
         android:layout_width="99dp"
         android:layout_height="84dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.74"
-        app:layout_constraintStart_toEndOf="@+id/imageView8"
-        app:layout_constraintTop_toTopOf="@+id/imageView8"
+        app:layout_constraintStart_toEndOf="@+id/recording"
+        app:layout_constraintTop_toTopOf="@+id/recording"
         app:srcCompat="@drawable/nextpage" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/sendBook"
         android:layout_width="98dp"
         android:layout_height="82dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-        app:layout_constraintEnd_toEndOf="@+id/imageView12"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12"
+        app:layout_constraintBottom_toBottomOf="@+id/recording"
+        app:layout_constraintEnd_toEndOf="@+id/imgNextbook"
+        app:layout_constraintTop_toBottomOf="@+id/imgNextbook"
         app:layout_constraintVertical_bias="0.581"
         app:srcCompat="@drawable/bookup" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="64dp"
-        android:text="전송"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
-        app:layout_constraintTop_toTopOf="@+id/imageView13" />
-
-    <Button
-        android:id="@+id/btnRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
-        android:layout_marginBottom="112dp"
-        android:text="녹음"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBooklist"
-        app:layout_constraintVertical_bias="0.938" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
