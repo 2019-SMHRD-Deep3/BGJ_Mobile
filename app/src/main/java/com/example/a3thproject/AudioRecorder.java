@@ -158,6 +158,8 @@ public class AudioRecorder extends AppCompatActivity {
                 if(recordCheck==false){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
+                    Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
+                    startActivityForResult(intent,101);
                 }else if(playCheck==false){
                     stopAudio();
                 }
