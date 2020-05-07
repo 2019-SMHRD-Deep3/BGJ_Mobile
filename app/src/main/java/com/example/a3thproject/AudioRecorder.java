@@ -98,10 +98,10 @@ public class AudioRecorder extends AppCompatActivity {
                 if(cnt != 0) {
                     cnt--;
                     voicetext.setText(voice.get(cnt));
-                    btnright.setImageResource(R.drawable.right);
+                    btnright.setImageResource(R.drawable.right_f);
                 }else{
-                    btnleft.setImageResource(R.drawable.left_f);
-                    btnright.setImageResource(R.drawable.right);
+                    btnleft.setImageResource(R.drawable.left);
+                    btnright.setImageResource(R.drawable.right_f);
                     Toast.makeText(AudioRecorder.this,
                             "첫 문장입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -115,10 +115,10 @@ public class AudioRecorder extends AppCompatActivity {
                 if(cnt != voice.size()-1){
                     cnt++;
                     voicetext.setText(voice.get(cnt));
-                    btnleft.setImageResource(R.drawable.left);
+                    btnleft.setImageResource(R.drawable.left_f);
                 }else{
-                    btnleft.setImageResource(R.drawable.left);
-                    btnright.setImageResource(R.drawable.right_f);
+                    btnleft.setImageResource(R.drawable.left_f);
+                    btnright.setImageResource(R.drawable.right);
                     Toast.makeText(AudioRecorder.this,
                             "마지막 문장입니다.", Toast.LENGTH_SHORT).show();
                 }

@@ -7,15 +7,38 @@
     android:background="#EDE3FF"
     tools:context=".AudioRecorder">
 
+    <!-- 툴바 관련 코드 (Start) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="@drawable/toolbar2"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp" />
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/voice"
-        android:layout_width="415dp"
-        android:layout_height="391dp"
-        android:background="#CD9595"
+        android:layout_width="409dp"
+        android:layout_height="340dp"
+        android:background="#0F8845FF"
+        android:textColor="#000000"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 
     <ImageView
         android:id="@+id/before"
@@ -24,7 +47,7 @@
         android:layout_marginStart="52dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voice"
-        app:srcCompat="@drawable/left_f" />
+        app:srcCompat="@drawable/left" />
 
     <ImageView
         android:id="@+id/after"
@@ -33,7 +56,7 @@
         android:layout_marginEnd="52dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voice"
-        app:srcCompat="@drawable/right" />
+        app:srcCompat="@drawable/right_f" />
 
     <Button
         android:id="@+id/allStop"
