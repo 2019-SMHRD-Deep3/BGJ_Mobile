@@ -45,6 +45,7 @@ public class Main6Activity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         title = intent.getStringExtra("title");
+        serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id="+id+"&title="+title;
 
         images_uri = getIntent().getParcelableArrayListExtra("imagelist");
         Log.v("listuri",  String.valueOf(images_uri));
@@ -75,7 +76,7 @@ public class Main6Activity extends AppCompatActivity {
                 });
                 for (int i=0; i<images_uri.size();i++){
                     Log.v("1차","1");
-                    DoFileUpload(serverURL+id, images_uri.get(i).getPath());
+                    DoFileUpload(serverURL, images_uri.get(i).getPath());
                     Log.v("1차", serverURL);
                     Log.v("1차",images_uri.get(i).toString().substring(39));
                     Toast.makeText(Main6Activity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();

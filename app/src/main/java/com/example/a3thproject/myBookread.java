@@ -8,6 +8,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -16,6 +17,9 @@ import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+
+import java.util.ArrayList;
+
 
 public class myBookread extends AppCompatActivity {
     WebView webView;
@@ -39,6 +43,7 @@ public class myBookread extends AppCompatActivity {
 
         webView = (WebView) findViewById(R.id.webvw);
         WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
         webSettings.setJavaScriptEnabled(true);   // 웹뷰 자바스크립트 true
 
         // 웹뷰 멀티 터치 가능하게 (줌기능)
@@ -54,8 +59,12 @@ public class myBookread extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num="+num);
 
+        //webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num="+num);
+        webView.loadUrl("http://172.30.1.17:8081/Podo/test2.jsp");
+        WebChromeClient chromeClient = new WebChromeClient();
+
+        webView.setWebChromeClient(chromeClient);
         btn1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -65,7 +74,7 @@ public class myBookread extends AppCompatActivity {
                     if(num<0) {
                         num = 0;
                     }
-                    webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num=" + num);
+                    //webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num=" + num);
 
                 } return false;
             }
@@ -77,7 +86,7 @@ public class myBookread extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     Toast.makeText(getApplicationContext(), "오른쪽 클릭", Toast.LENGTH_LONG).show();
                     num += 1;
-                    webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num=" + num);
+                    //webView.loadUrl("http://172.30.1.17:8081/Podo/test.html?num=" + num);
 
                 }
                 return false;
