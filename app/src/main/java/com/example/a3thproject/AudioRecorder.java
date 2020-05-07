@@ -42,7 +42,7 @@ public class AudioRecorder extends AppCompatActivity {
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
 
     // 뷰어 요소
-    ImageView btnleft, btnright, checkOn;
+    ImageView btnleft, btnright, checkOn,Iplay;
     Button onRecord, onPlay, aStop;
     TextView voicetext;
 
@@ -70,7 +70,7 @@ public class AudioRecorder extends AppCompatActivity {
         voicetext = findViewById(R.id.voice);
 
         onRecord = findViewById(R.id.recordOn); //
-        onPlay = findViewById(R.id.playOn);     // 재생버튼
+        Iplay = findViewById(R.id.iPlay);     // 재생버튼
         aStop = findViewById(R.id.allStop);     // 정지버튼
         checkOn = findViewById(R.id.Ocheck);    // 일시정지, 녹음
 
@@ -126,11 +126,12 @@ public class AudioRecorder extends AppCompatActivity {
         });
 
         // 재생
-        onPlay.setOnClickListener(new View.OnClickListener() {
+        Iplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(playCheck){
                     playAudio();
+                    Iplay.setImageResource(R.drawable.play_n);
                 }
                 playCheck = !playCheck;
             }
@@ -140,7 +141,7 @@ public class AudioRecorder extends AppCompatActivity {
         onRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onPlay.setVisibility(View.VISIBLE);
+                Iplay.setVisibility(View.VISIBLE);
                 aStop.setVisibility(View.VISIBLE);
                 checkOn.setImageResource(R.drawable.minstop1);
                 recordAudio();
@@ -160,8 +161,9 @@ public class AudioRecorder extends AppCompatActivity {
                     checkOn.setImageResource(R.drawable.norecord_t);
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
                     startActivityForResult(intent,101);
-                }else if(playCheck==false){
+                }else if(recordCheck==true&&playCheck==false){
                     stopAudio();
+                    Iplay.setImageResource(R.drawable.play_t);
                 }
                 recordCheck = !recordCheck;
                 release = !release;

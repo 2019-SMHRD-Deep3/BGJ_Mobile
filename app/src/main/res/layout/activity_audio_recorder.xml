@@ -36,19 +36,6 @@
         app:srcCompat="@drawable/right" />
 
     <Button
-        android:id="@+id/playOn"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="#00FFFFFF"
-        android:enabled="true"
-        android:foreground="@drawable/play_t"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
-        app:layout_constraintEnd_toStartOf="@+id/Ocheck"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/allStop"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -69,9 +56,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/allStop"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/playOn"
+        app:layout_constraintStart_toEndOf="@+id/iPlay"
         app:layout_constraintTop_toBottomOf="@+id/voice"
-        app:layout_constraintVertical_bias="0.025"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/norecord_t" />
 
     <Button
@@ -85,7 +72,18 @@
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/voice"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/iPlay"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
+        app:layout_constraintEnd_toStartOf="@+id/Ocheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/play_t" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

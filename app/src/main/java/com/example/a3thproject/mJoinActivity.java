@@ -94,9 +94,7 @@ public class mJoinActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 testJson();
-
             }
         });
 
@@ -114,8 +112,6 @@ public class mJoinActivity extends AppCompatActivity {
 
     public void testJson(){
         String url = "http://172.30.1.17:8081/Podo/Joinservice";
-
-
 
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
