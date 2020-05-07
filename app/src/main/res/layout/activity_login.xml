@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EDE3FE"
     tools:context=".LoginActivity">
 
     <EditText
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
         android:hint="User ID"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 
     <EditText
         android:id="@+id/pw"
@@ -33,26 +34,28 @@
 
     <Button
         android:id="@+id/uInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/et_default_drawable"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/toolbar2"
         android:text="회원가입"
         android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/logins"
-        app:layout_constraintEnd_toEndOf="@+id/pw"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/logins" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/logins"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:background="@drawable/et_default_drawable"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/toolbar2"
         android:text="로그인"
         android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/pw"
-        app:layout_constraintTop_toBottomOf="@+id/pw" />
+        app:layout_constraintBottom_toTopOf="@+id/uInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"
@@ -66,15 +69,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="60dp"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/title"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="28dp"/>
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp" />
     </androidx.appcompat.widget.Toolbar>
-
 
 
     <Button

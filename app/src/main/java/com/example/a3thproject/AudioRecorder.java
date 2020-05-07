@@ -4,12 +4,14 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -25,7 +27,7 @@ public class AudioRecorder extends AppCompatActivity {
     boolean mStartRecording = true;
     boolean mStartPlaying = true;
 
-    Button record, play, gigi;
+    Button record, play, gigi, btn2;
     ImageView Rmic, sends, Pnext;
 
     private static final String LOG_TAG = "AudioRecordTest";
@@ -111,6 +113,11 @@ public class AudioRecorder extends AppCompatActivity {
         setContentView(R.layout.activity_audio_recorder);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        btn2 = findViewById(R.id.btn2);
+
+
+
+
 
         // Record to the external cache directory for visibility
         fileName = getExternalCacheDir().getAbsolutePath();
@@ -121,6 +128,16 @@ public class AudioRecorder extends AppCompatActivity {
         //gigi = findViewById(R.id.GGGG);
 
         Main2Activity jj = new Main2Activity();
+
+       btn2.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(new Intent(AudioRecorder.this, Main2Activity.class));
+
+           }
+       });
+
+
 
         // 녹음기능
 //        record = findViewById(R.id.btnRecord);
@@ -207,4 +224,6 @@ public class AudioRecorder extends AppCompatActivity {
 //                        ViewGroup.LayoutParams.WRAP_CONTENT,
 //                        0));
 //        setContentView(ll);
+
+
 }

@@ -143,7 +143,15 @@ public class Main5Activity extends AppCompatActivity {
                                 Log.v("listuri", String.valueOf(images_uri));
                                 showUriList(uriList);
 
-                                Editview("동화책 제목을 입력하세요");
+                                try {
+                                    addEditText.setVisibility(View.GONE);
+                                    Editview("동화책 제목을 입력하세요");
+                                }catch (Exception e){
+                                    Editview("동화책 제목을 입력하세요");
+                                }
+
+
+
 
                             });
 
@@ -273,7 +281,9 @@ public class Main5Activity extends AppCompatActivity {
 
            public void Editview(String a){
 
+
             LinearLayout topLL = (LinearLayout) findViewById(R.id.dynamicArea);
+
             addEditText = new EditText(Main5Activity.this);
             addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 

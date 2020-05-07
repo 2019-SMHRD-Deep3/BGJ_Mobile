@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -33,7 +34,7 @@ public class Main6Activity extends AppCompatActivity {
     private String imageName = null;
     String id, title;
     private ArrayList<Uri> images_uri;
-
+    ProgressDialog dialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,14 +58,33 @@ public class Main6Activity extends AppCompatActivity {
         //이미지 전송 버튼
 
         int i=0;
-                for (i=0; i<images_uri.size();i++){
+
+
+        new Thread(new Runnable() {
+
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+
+                    public void run() {
+
+                        dialog = ProgressDialog.show(Main6Activity.this, "", "Uploading file...", true);
+
+                    }
+
+                });
+                for (int i=0; i<images_uri.size();i++){
                     Log.v("1차","1");
                     DoFileUpload(serverURL+id, images_uri.get(i).getPath());
                     Log.v("1차", serverURL);
                     Log.v("1차",images_uri.get(i).toString().substring(39));
-                    Toast.makeText(getApplicationContext(), "이미지 전송 성공", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Main6Activity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
                     Log.d("Send", "Success");
                 }
+
+            }
+        }).start();
+
 
 
         //serverURL = "http://172.30.1.17:8081/Podo/GoogleVisionApiTester";
