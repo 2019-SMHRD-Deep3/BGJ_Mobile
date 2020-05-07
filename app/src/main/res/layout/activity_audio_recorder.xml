@@ -4,47 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EDE3FF"
     tools:context=".AudioRecorder">
 
-    <Button
-        android:id="@+id/oPlaying"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OnPlaying"
-        app:layout_constraintBottom_toBottomOf="@+id/oChack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/oChack" />
-
-    <Button
-        android:id="@+id/oChack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="chackpoint"
-        app:layout_constraintEnd_toStartOf="@+id/oPlaying"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/oRecord"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <Button
-        android:id="@+id/oRecord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="onRecord"
-        app:layout_constraintBottom_toBottomOf="@+id/oChack"
-        app:layout_constraintEnd_toStartOf="@+id/oChack"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="410dp"
-        android:layout_height="461dp"
-        android:text="TextView"
+        android:id="@+id/voice"
+        android:layout_width="415dp"
+        android:layout_height="391dp"
+        android:background="#CD9595"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/before"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:srcCompat="@drawable/left_f" />
+
+    <ImageView
+        android:id="@+id/after"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:srcCompat="@drawable/right" />
+
+    <Button
+        android:id="@+id/playOn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00FFFFFF"
+        android:enabled="true"
+        android:foreground="@drawable/play_t"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
+        app:layout_constraintEnd_toStartOf="@+id/Ocheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/allStop"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00FFFFFF"
+        android:enabled="true"
+        android:foreground="@drawable/stop_t"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Ocheck" />
+
+    <ImageView
+        android:id="@+id/Ocheck"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/allStop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/playOn"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:layout_constraintVertical_bias="0.025"
+        app:srcCompat="@drawable/norecord_t" />
+
+    <Button
+        android:id="@+id/recordOn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="88dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:layout_constraintVertical_bias="0.025" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

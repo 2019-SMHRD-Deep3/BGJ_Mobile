@@ -14,12 +14,18 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class AudioRecorder extends AppCompatActivity {
+
+    private static final String TAG = "AudioRecorder";
+
     MediaRecorder recorder;
     String filename;
     MediaPlayer player;
@@ -27,11 +33,15 @@ public class AudioRecorder extends AppCompatActivity {
     boolean playCheck = true;
     boolean recordCheck = true;
     boolean release = true;
+    boolean Rcheck = true;
 
+    int cnt = 0;
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
 
-    //Button iplay,ipause,irestart,istop,irecord,irecordStop;
-    Button Oplay, Ocheck, Orecord;
+    // 뷰어 요소
+    ImageView btnleft, btnright, checkOn;
+    Button onRecord, onPlay, aStop;
+    TextView voicetext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +57,287 @@ public class AudioRecorder extends AppCompatActivity {
         filename = file.getAbsolutePath();
         Log.d("TTST", "저장할 파일 명 : " + filename);
 
-//        iplay = findViewById(R.id.Iplay);
-//        ipause = findViewById(R.id.Ipause);
-//        irestart = findViewById(R.id.Irestart);
-//        istop = findViewById(R.id.Istop);
-//        irecord = findViewById(R.id.Irecord);
-//        irecordStop = findViewById(R.id.IrecordStop);
-        Oplay = findViewById(R.id.oPlaying);
-        Ocheck = findViewById(R.id.oChack);
-        Orecord = findViewById(R.id.oRecord);
+//        Oplay = findViewById(R.id.oPlaying);
+//        Ocheck = findViewById(R.id.oCheck);
+//        Orecord = findViewById(R.id.oRecord);
 
-        // 수정 이전 녹음기능 코드
+        // 기능요소
+        btnleft = findViewById(R.id.before);
+        btnright = findViewById(R.id.after);
+        voicetext = findViewById(R.id.voice);
+
+        onRecord = findViewById(R.id.recordOn); //
+        onPlay = findViewById(R.id.playOn);     // 재생버튼
+        aStop = findViewById(R.id.allStop);     // 정지버튼
+        checkOn = findViewById(R.id.Ocheck);    // 일시정지, 녹음
+
+
+
+        ArrayList<String> voice = new ArrayList<>();
+
+        voice.add("f");
+        voice.add("ff");
+        voice.add("fff");
+        voice.add("ffff");
+        voice.add("fffff");
+        voice.add("ffffff");
+        voice.add("fffffff");
+
+        voicetext.setText(voice.get(0));
+
+        // 이전 페이지로
+        btnleft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cnt != 0) {
+                    cnt--;
+                    voicetext.setText(voice.get(cnt));
+
+                }else{
+                    btnleft.setImageResource(R.drawable.left_f);
+                    btnright.setImageResource(R.drawable.right);
+                    Toast.makeText(AudioRecorder.this,
+                            "첫 문장입니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // 다음 페이지로
+        btnright.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(cnt != voice.size()-1){
+                    cnt++;
+                    voicetext.setText(voice.get(cnt));
+                    btnleft.setImageResource(R.drawable.left);
+                }else{
+                    btnleft.setImageResource(R.drawable.left);
+                    btnright.setImageResource(R.drawable.right_f);
+                    Toast.makeText(AudioRecorder.this,
+                            "마지막 문장입니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // 재생
+        onPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(playCheck){
+                    playAudio();
+                }
+                playCheck = !playCheck;
+            }
+        });
+
+        // (일회용) 녹음 시작과 동시에 버튼 보이기
+        onRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onPlay.setVisibility(View.VISIBLE);
+                aStop.setVisibility(View.VISIBLE);
+                checkOn.setImageResource(R.drawable.minstop1);
+                recordAudio();
+                onRecord.setEnabled(false);
+                onRecord.setVisibility(View.GONE);
+                recordCheck = !recordCheck;
+            }
+
+        });
+
+        // 정지
+        aStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(recordCheck==false){
+                    stopRecording();
+                }else if(playCheck==false){
+                    stopAudio();
+                }
+                recordCheck = !recordCheck;
+                playCheck = !playCheck;
+            }
+        });
+
+        // 일시정지 및 재실행에 대한 기능적 고찰
+        checkOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("myTest", "result");
+                if(recordCheck==false&&release==true){
+                    Log.v("myTest", "test1");
+                    checkOn.setImageResource(R.drawable.norecord_t);
+                    pauseAudio();
+                }else if(recordCheck==false&&release==false){
+                    Log.v("myTest", "test2");
+                    checkOn.setImageResource(R.drawable.minstop1);
+                    resumeAudio();
+                }
+                release = !release;
+            }
+        });
+
+
+
+        // (사운드) 버튼별 기능
+        // 녹음 실행 / 녹음 중단
+//        Orecord.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(recordCheck){
+//                    recordAudio();
+//                }else{
+//                    T.setEnabled(false);
+//                    stopRecording();
+//                }
+//                recordCheck = !recordCheck;
+//            }
+//        });
+//
+//        t3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(recordCheck&&Rcheck){
+//                    recordAudio();
+//                    T.setVisibility(View.VISIBLE);
+//                    t2.setVisibility(View.VISIBLE);
+//                    loo.setImageResource(R.drawable.minstop1);
+//                    Rcheck=!Rcheck;
+//                }else if(recordCheck&&Rcheck==false){
+//                        recordAudio();
+//                    recordCheck = !recordCheck;
+//                }else{
+//                    stopRecording();
+//                }
+//            }
+//        });
+
+        // 일시 중단 / 재실행
+//        Ocheck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(release){
+//                    pauseAudio();
+//                }else{
+//                    resumeAudio();
+//                }
+//            }
+//        });
+//        T.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(release){
+//                    pauseAudio();
+//                }else{
+//                    resumeAudio();
+//                }
+//            }
+//        });
+
+        // 재생 실행 / 재생 중단
+//        Oplay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(playCheck){
+//                    playAudio();
+//                }else{
+//                    stopAudio();
+//                }
+//                playCheck = !playCheck;
+//            }
+//        });
+    }
+
+    // 녹음 실행
+    private void recordAudio() {
+        recorder = new MediaRecorder();
+        /* 그대로 저장하면 용량이 크다.
+         * 프레임 : 한 순간의 음성이 들어오면, 음성을 바이트 단위로 전부 저장하는 것
+         * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
+         * 따라서 용량이 크므로, 압축할 필요가 있음 */
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC); // 어디에서 음성 데이터를 받을 것인지
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); // 압축 형식 설정
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+        recorder.setOutputFile(filename);
+
+        try {
+            recorder.prepare();
+            recorder.start();
+
+            Toast.makeText(this, "녹음 시작됨.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 녹음 중단
+    private void stopRecording() {
+        if (recorder != null) {
+            recorder.stop();
+            recorder.release();
+            recorder = null;
+            Toast.makeText(this, "녹음 중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 파일 재생
+    private void playAudio() {
+        try {
+            closePlayer();
+            player = new MediaPlayer();
+            player.setDataSource(filename);
+            player.prepare();
+            player.start();
+            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // 재생 중단
+    private void stopAudio() {
+        if (player != null && player.isPlaying()) {
+            player.stop();
+            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 녹음 일시중단
+    private void pauseAudio() {
+        if (player != null) {
+            position = player.getCurrentPosition();
+            player.pause();
+
+            Toast.makeText(this, "일시정지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 녹음 재시작
+    private void resumeAudio() {
+        if (player != null && !player.isPlaying()) {
+            player.seekTo(position);
+            player.start();
+            Toast.makeText(this, "재시작됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public void closePlayer() {
+        if (player != null) {
+            player.release();
+            player = null;
+        }
+    }
+
+    public void permissionCheck(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
+        }
+    }
+
+    // 사용하지 않는 코드
+    // 수정 이전 녹음기능 코드
 //        iplay.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -99,126 +379,13 @@ public class AudioRecorder extends AppCompatActivity {
 //                stopRecording();
 //            }
 //        });
-        // 수정 이전 녹음 코드
+    // 수정 이전 녹음 코드
+    //        iplay = findViewById(R.id.Iplay);
+//        ipause = findViewById(R.id.Ipause);
+//        irestart = findViewById(R.id.Irestart);
+//        istop = findViewById(R.id.Istop);
+//        irecord = findViewById(R.id.Irecord);
+//        irecordStop = findViewById(R.id.IrecordStop);
 
 
-        // 녹음 실행 / 녹음 중단
-        Orecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(recordCheck){
-                    recordAudio();
-                }else{
-                    stopRecording();
-                }
-                recordCheck = !recordCheck;
-            }
-        });
-
-        // 일시 중단 / 재실행
-        Ocheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(release){
-                    pauseAudio();
-                }else{
-                    resumeAudio();
-                }
-            }
-        });
-
-        // 재생 실행 / 재생 중단
-        Oplay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(playCheck){
-                    playAudio();
-                }else{
-                    stopAudio();
-                }
-                playCheck = !playCheck;
-            }
-        });
-    }
-
-    private void recordAudio() {
-        recorder = new MediaRecorder();
-        /* 그대로 저장하면 용량이 크다.
-         * 프레임 : 한 순간의 음성이 들어오면, 음성을 바이트 단위로 전부 저장하는 것
-         * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
-         * 따라서 용량이 크므로, 압축할 필요가 있음 */
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC); // 어디에서 음성 데이터를 받을 것인지
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); // 압축 형식 설정
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-        recorder.setOutputFile(filename);
-
-        try {
-            recorder.prepare();
-            recorder.start();
-
-            Toast.makeText(this, "녹음 시작됨.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void stopRecording() {
-        if (recorder != null) {
-            recorder.stop();
-            recorder.release();
-            recorder = null;
-            Toast.makeText(this, "녹음 중지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void playAudio() {
-        try {
-            closePlayer();
-            player = new MediaPlayer();
-            player.setDataSource(filename);
-            player.prepare();
-            player.start();
-            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void pauseAudio() {
-        if (player != null) {
-            position = player.getCurrentPosition();
-            player.pause();
-
-            Toast.makeText(this, "일시정지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void resumeAudio() {
-        if (player != null && !player.isPlaying()) {
-            player.seekTo(position);
-            player.start();
-            Toast.makeText(this, "재시작됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private void stopAudio() {
-        if (player != null && player.isPlaying()) {
-            player.stop();
-            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void closePlayer() {
-        if (player != null) {
-            player.release();
-            player = null;
-        }
-    }
-
-    public void permissionCheck(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
-                || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
-        }
-    }
 }
