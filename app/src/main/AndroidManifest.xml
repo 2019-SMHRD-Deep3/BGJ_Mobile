@@ -35,7 +35,8 @@
         </activity>
         <activity android:name=".myBookshelf" /> <!-- 내 서재 -->
         <activity android:name=".LoginActivity" /> <!-- 로그인 화면 -->
-        <activity android:name=".Main2Activity" /> <!-- 녹음파일 전송 기능 -->
+        <activity android:name=".Main2Activity"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"/> <!-- 녹음파일 전송 기능 -->
         <activity android:name=".AudioRecorder" /> <!-- 녹음파일 저장 기능 -->
         <activity android:name=".mJoinActivity" />
         <activity android:name=".MainActivity" /> <!-- 기능 테스트 -->

@@ -98,7 +98,7 @@ public class MenuActivity extends AppCompatActivity {
         MenuInflater inflater = popup.getMenuInflater();
         Menu menu = popup.getMenu();
         // XML의 메뉴 가져오기
-      
+
         inflater.inflate(R.menu.popmenu, menu);
 
         // 메뉴 안에서 클릭이벤트 발생시 처리

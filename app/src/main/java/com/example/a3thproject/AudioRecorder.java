@@ -16,6 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -71,7 +76,7 @@ public class AudioRecorder extends AppCompatActivity {
         aStop = findViewById(R.id.allStop);     // 정지버튼
         checkOn = findViewById(R.id.Ocheck);    // 일시정지, 녹음
 
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
 
         //gigi = findViewById(R.id.GGGG);
 
@@ -158,6 +163,8 @@ public class AudioRecorder extends AppCompatActivity {
             public void onClick(View v) {
                 if(recordCheck==false){
                     stopRecording();
+
+
                 }else if(playCheck==false){
                     stopAudio();
                 }
@@ -280,13 +287,63 @@ public class AudioRecorder extends AppCompatActivity {
     // 녹음 중단
     private void stopRecording() {
         if (recorder != null) {
+            recorder.stop();
             recorder.release();
             recorder = null;
+            Toast.makeText(this, "녹음 중지됨.", Toast.LENGTH_SHORT).show();
         }
+    }
 
+    private void playAudio() {
+        try {
+            closePlayer();
+            player = new MediaPlayer();
+            player.setDataSource(filename);
+            player.prepare();
+            player.start();
+            Toast.makeText(this, "재생 시작됨.", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void pauseAudio() {
+        if (player != null) {
+            position = player.getCurrentPosition();
+            player.pause();
+
+            Toast.makeText(this, "일시정지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void resumeAudio() {
+        if (player != null && !player.isPlaying()) {
+            player.seekTo(position);
+            player.start();
+            Toast.makeText(this, "재시작됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void stopAudio() {
+        if (player != null && player.isPlaying()) {
+            player.stop();
+            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void closePlayer() {
         if (player != null) {
             player.release();
             player = null;
+        }
+    }
+
+
+
+    public void permissionCheck(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
         }
     }
 
