@@ -7,58 +7,106 @@
     android:background="#EDE3FF"
     tools:context=".AudioRecorder">
 
-    <Button
-        android:id="@+id/btnPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
-        android:text="재생"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- 툴바 관련 코드 (Start) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar1"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="@drawable/toolbar2"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/title"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="28dp" />
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/tvBooklist"
-        android:layout_width="412dp"
-        android:layout_height="352dp"
+        android:id="@+id/voice"
+        android:layout_width="409dp"
+        android:layout_height="340dp"
+        android:background="#0F8845FF"
+        android:textColor="#000000"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
 
     <ImageView
-        android:id="@+id/recording"
-        android:layout_width="162dp"
-        android:layout_height="233dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="16dp"
+        android:id="@+id/before"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="52dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:srcCompat="@drawable/left" />
+
+    <ImageView
+        android:id="@+id/after"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:srcCompat="@drawable/right_f" />
+
+    <Button
+        android:id="@+id/allStop"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00FFFFFF"
+        android:enabled="true"
+        android:foreground="@drawable/stop_t"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/Ocheck" />
+
+    <ImageView
+        android:id="@+id/Ocheck"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBooklist"
-        app:layout_constraintVertical_bias="0.241"
-        app:srcCompat="@drawable/record_ready" />
+        app:layout_constraintEnd_toStartOf="@+id/allStop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/iPlay"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/norecord_t" />
 
-    <ImageView
-        android:id="@+id/imgNextbook"
-        android:layout_width="99dp"
-        android:layout_height="84dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="44dp"
+    <Button
+        android:id="@+id/recordOn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="88dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.74"
-        app:layout_constraintStart_toEndOf="@+id/recording"
-        app:layout_constraintTop_toTopOf="@+id/recording"
-        app:srcCompat="@drawable/nextpage" />
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voice"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/sendBook"
-        android:layout_width="98dp"
-        android:layout_height="82dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recording"
-        app:layout_constraintEnd_toEndOf="@+id/imgNextbook"
-        app:layout_constraintTop_toBottomOf="@+id/imgNextbook"
-        app:layout_constraintVertical_bias="0.581"
-        app:srcCompat="@drawable/bookup" />
+        android:id="@+id/iPlay"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/Ocheck"
+        app:layout_constraintEnd_toStartOf="@+id/Ocheck"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/play_t" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

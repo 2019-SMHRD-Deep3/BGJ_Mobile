@@ -164,7 +164,9 @@ public class MenuActivity extends AppCompatActivity {
         MenuInflater inflater = popup.getMenuInflater();
         Menu menu = popup.getMenu();
         // XML의 메뉴 가져오기
+
         inflater.inflate(R.menu.popmenu, menu);
+
         // 메뉴 안에서 클릭이벤트 발생시 처리
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -172,8 +174,10 @@ public class MenuActivity extends AppCompatActivity {
 
                 switch(item.getItemId()){
                     case R.id.login:
-                        intent = new Intent(v.getContext(), LoginActivity.class);
-                        startActivity(intent);
+
+                            intent = new Intent(v.getContext(), LoginActivity.class);
+                            startActivity(intent);
+
                         break;
                 }
 
