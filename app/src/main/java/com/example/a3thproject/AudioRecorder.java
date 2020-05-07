@@ -75,13 +75,16 @@ public class AudioRecorder extends AppCompatActivity {
 
         ArrayList<String> voice = new ArrayList<>();
 
-        voice.add("f");
-        voice.add("ff");
-        voice.add("fff");
-        voice.add("ffff");
-        voice.add("fffff");
-        voice.add("ffffff");
-        voice.add("fffffff");
+        voice.add("첫번째");
+        voice.add("세상은 세가지로 이루어져 있습니다.");
+        voice.add("하늘, 바다, 땅");
+        voice.add("여기, 저기, 거기");
+        voice.add("동그라미, 세모, 네모");
+        voice.add("철수, 영희, 바둑이 (읭?)");
+        voice.add("... 그렇다고요");
+        voice.add("");
+        voice.add("로그 메소드의 첫번째 인자로 사용할 상수 TAG를 정의합니다." +
+                "메세지들을 구분하는 구분값으로 사용되어집니다. 보통 현재 클래스의 이름을 많이 사용합니다.");
 
         voicetext.setText(voice.get(0));
 
@@ -92,7 +95,7 @@ public class AudioRecorder extends AppCompatActivity {
                 if(cnt != 0) {
                     cnt--;
                     voicetext.setText(voice.get(cnt));
-
+                    btnright.setImageResource(R.drawable.right);
                 }else{
                     btnleft.setImageResource(R.drawable.left_f);
                     btnright.setImageResource(R.drawable.right);
