@@ -1,6 +1,7 @@
 package com.example.a3thproject;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -31,7 +32,9 @@ public class Main6Activity extends AppCompatActivity {
     private Bitmap image_bitmap_copy = null;
     private Bitmap image_bitmap = null;
     private String imageName = null;
+    ProgressDialog dialog = null;
     String id, title;
+    int i = 0;
     private ArrayList<Uri> images_uri;
 
 
@@ -44,11 +47,11 @@ public class Main6Activity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         title = intent.getStringExtra("title");
-        serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id="+id+"&title="+title;
+        serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id="+id+"&title=" + title +"&cnt=";
 
         images_uri = getIntent().getParcelableArrayListExtra("imagelist");
         Log.v("listuri",  String.valueOf(images_uri));
-
+        Log.v("title",title);
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .permitDiskReads()
                 .permitDiskWrites()
@@ -57,15 +60,44 @@ public class Main6Activity extends AppCompatActivity {
         button6 = (Button) findViewById(R.id.button6);
         //이미지 전송 버튼
 
-        int i=0;
+
+
+
+
+        new Thread(new Runnable() {
+
+            public void run() {
+
+                runOnUiThread(new Runnable() {
+
+                    public void run() {
+
+                        dialog = ProgressDialog.show(Main6Activity.this, "", "Uploading file...", true);
+
+                    }
+
+                });
+
                 for (i=0; i<images_uri.size();i++){
-                    Log.v("1차","1");
-                    DoFileUpload(serverURL, images_uri.get(i).getPath());
-                    Log.v("1차", serverURL);
-                    Log.v("1차",images_uri.get(i).toString().substring(39));
-                    Toast.makeText(getApplicationContext(), "이미지 전송 성공", Toast.LENGTH_SHORT).show();
-                    Log.d("Send", "Success");
+                   Log.v("jj",""+i);
+
+                    DoFileUpload(serverURL+(images_uri.size()-i-1), images_uri.get(i).getPath());
+                    // Log.v("1차", serverURL);
+                    // Log.v("1차",images_uri.get(i).toString().substring(39));
+                    //Log.d("Send", "Success");
+
                 }
+
+                Intent intent1 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent1.putExtra("id", id);
+                startActivity(intent1);
+
+            }
+        }).start();
+
+
+
+
 
 
         //serverURL = "http://172.30.1.17:8081/Podo/GoogleVisionApiTester";

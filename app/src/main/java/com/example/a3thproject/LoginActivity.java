@@ -45,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                     testJson();
                 }
             });
+
             return true;
         }
 

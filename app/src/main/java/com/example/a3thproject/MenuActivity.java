@@ -11,17 +11,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
+
+import static java.sql.DriverManager.println;
+
 public class MenuActivity extends AppCompatActivity {
 
     ImageView menu1, menu2, menu3;
-    String id;
+    String id = "";
     Button Pop;
     Intent intent;
+    static RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +51,11 @@ public class MenuActivity extends AppCompatActivity {
         actionBar.hide();
 
         intent = getIntent();
-        id = intent.getStringExtra("id");
+        if(id!=null){
+            id = intent.getStringExtra("id");
+        }
+
+
 
         Pop = findViewById(R.id.btnOP);
         menu1 = findViewById(R.id.menu1);
@@ -39,13 +63,55 @@ public class MenuActivity extends AppCompatActivity {
         menu3 = findViewById(R.id.img3);
         //img1 = findViewById(R.id.img1);
 
+        if(requestQueue == null){
+            requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
 
+        Log.v("mmm",""+intent.getStringExtra("idmm"));
+        Log.v("mmm2",""+id);
         menu1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, myBookshelf.class);
-                startActivityForResult(intent,101);
+
+                String url = "http://172.30.1.17:8081/Podo/GetBookOfLibrary";
+
+
+                StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jObj = new JSONObject(response);
+                            boolean error = jObj.getBoolean("error");
+
+                            if (!error) {
+                            } else {
+                                Toast.makeText(getApplicationContext(),
+                                        "요청에 실패했습니다 : 서버 오류", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        println(response);
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> params = new HashMap<String, String>();
+                        params.put("id", id);
+                        params.put("title","means");
+                        return params;
+                    }
+                };
+                request.setShouldCache(false);
+                requestQueue.add(request);
+
             }
+
+
         });
 
         menu2.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +181,26 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
         popup.show();
+    }
+
+    public void println(String data){
+        if (!data.equals("false")){
+
+            String resultData = null;
+            try {
+                resultData = URLDecoder.decode(data, "EUC-KR");
+            }catch (IOException e){
+
+            }
+
+            Intent intent = new Intent(getApplicationContext(), myBookshelf.class);
+            intent.putExtra("library",resultData);
+            intent.putExtra("id",id);
+            startActivityForResult(intent,101);
+        }else{
+            Toast.makeText(getApplicationContext(),
+                    "로그인 실패 다시 확인해주세요.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
