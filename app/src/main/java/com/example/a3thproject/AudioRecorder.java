@@ -1,5 +1,10 @@
 package com.example.a3thproject;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -44,7 +49,7 @@ public class AudioRecorder extends AppCompatActivity {
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
 
     // 뷰어 요소
-    ImageView btnleft, btnright, checkOn;
+    ImageView btnleft, btnright, checkOn,Iplay;
     Button onRecord, onPlay, aStop;
     TextView voicetext;
 
@@ -72,7 +77,7 @@ public class AudioRecorder extends AppCompatActivity {
         voicetext = findViewById(R.id.voice);
 
         onRecord = findViewById(R.id.recordOn); //
-        onPlay = findViewById(R.id.playOn);     // 재생버튼
+        Iplay = findViewById(R.id.iPlay);     // 재생버튼
         aStop = findViewById(R.id.allStop);     // 정지버튼
         checkOn = findViewById(R.id.Ocheck);    // 일시정지, 녹음
 
@@ -102,10 +107,10 @@ public class AudioRecorder extends AppCompatActivity {
                 if(cnt != 0) {
                     cnt--;
                     voicetext.setText(voice.get(cnt));
-                    btnright.setImageResource(R.drawable.right);
+                    btnright.setImageResource(R.drawable.right_f);
                 }else{
-                    btnleft.setImageResource(R.drawable.left_f);
-                    btnright.setImageResource(R.drawable.right);
+                    btnleft.setImageResource(R.drawable.left);
+                    btnright.setImageResource(R.drawable.right_f);
                     Toast.makeText(AudioRecorder.this,
                             "첫 문장입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -120,10 +125,10 @@ public class AudioRecorder extends AppCompatActivity {
                 if(cnt != voice.size()-1){
                     cnt++;
                     voicetext.setText(voice.get(cnt));
-                    btnleft.setImageResource(R.drawable.left);
+                    btnleft.setImageResource(R.drawable.left_f);
                 }else{
-                    btnleft.setImageResource(R.drawable.left);
-                    btnright.setImageResource(R.drawable.right_f);
+                    btnleft.setImageResource(R.drawable.left_f);
+                    btnright.setImageResource(R.drawable.right);
                     Toast.makeText(AudioRecorder.this,
                             "마지막 문장입니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -132,11 +137,12 @@ public class AudioRecorder extends AppCompatActivity {
         });
 
         // 재생
-        onPlay.setOnClickListener(new View.OnClickListener() {
+        Iplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(playCheck){
                     playAudio();
+                    Iplay.setImageResource(R.drawable.play_n);
                 }
                 playCheck = !playCheck;
             }
@@ -163,13 +169,15 @@ public class AudioRecorder extends AppCompatActivity {
             public void onClick(View v) {
                 if(recordCheck==false){
                     stopRecording();
+                    checkOn.setImageResource(R.drawable.norecord_t);
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
                     startActivityForResult(intent,101);
-
-                }else if(playCheck==false){
+                }else if(recordCheck==true&&playCheck==false){
                     stopAudio();
+                    Iplay.setImageResource(R.drawable.play_t);
                 }
                 recordCheck = !recordCheck;
+                release = !release;
                 playCheck = !playCheck;
             }
         });
@@ -179,7 +187,10 @@ public class AudioRecorder extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.v("myTest", "result");
-                if(recordCheck==false&&release==true){
+                if(recordCheck==true&&release==true){
+                    checkOn.setImageResource(R.drawable.minstop1);
+                    recordAudio();
+                }else if(recordCheck==false&&release==true){
                     Log.v("myTest", "test1");
                     checkOn.setImageResource(R.drawable.norecord_t);
                     pauseAudio();
@@ -308,6 +319,15 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
+    // 재생 중단
+    private void stopAudio() {
+        if (player != null && player.isPlaying()) {
+            player.stop();
+            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // 녹음 일시중단
     private void pauseAudio() {
         if (player != null) {
             position = player.getCurrentPosition();
@@ -317,6 +337,7 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
+    // 녹음 재시작
     private void resumeAudio() {
         if (player != null && !player.isPlaying()) {
             player.seekTo(position);
