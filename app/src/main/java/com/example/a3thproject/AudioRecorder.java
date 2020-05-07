@@ -6,6 +6,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -13,6 +15,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -275,6 +278,10 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
+    public void serverplay(){
+        FileUploadUtils f = new FileUploadUtils();
+    }
+
     // 사용하지 않는 코드
     // 수정 이전 녹음기능 코드
 //        iplay.setOnClickListener(new View.OnClickListener() {
@@ -394,4 +401,18 @@ public class AudioRecorder extends AppCompatActivity {
 //        });
 
 
+//        LinearLayout ll = new LinearLayout(this);
+//        recordButton = new RecordButton(this);
+//        ll.addView(recordButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
+//        playButton = new PlayButton(this);
+//        ll.addView(playButton,
+//                new LinearLayout.LayoutParams(
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        ViewGroup.LayoutParams.WRAP_CONTENT,
+//                        0));
+//        setContentView(ll);
 }

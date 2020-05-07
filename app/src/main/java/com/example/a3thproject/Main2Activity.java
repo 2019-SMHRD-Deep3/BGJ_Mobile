@@ -4,11 +4,15 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -17,7 +21,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends FragmentActivity {
+
+
+
 //    Button btnImageSend;
 //    File tempSelectFile;
 //    @Override
@@ -107,6 +114,9 @@ public class Main2Activity extends AppCompatActivity {
             @Override
 
             public void onClick(View v) {
+
+
+
                 dialog = ProgressDialog.show(Main2Activity.this, "", "Uploading file...", true);
                                 new Thread(new Runnable() {
 
