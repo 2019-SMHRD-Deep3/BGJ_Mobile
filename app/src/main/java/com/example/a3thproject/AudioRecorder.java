@@ -163,7 +163,8 @@ public class AudioRecorder extends AppCompatActivity {
             public void onClick(View v) {
                 if(recordCheck==false){
                     stopRecording();
-
+                    Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
+                    startActivityForResult(intent,101);
 
                 }else if(playCheck==false){
                     stopAudio();
