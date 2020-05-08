@@ -9,6 +9,10 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioRecord;
+import android.media.AudioTrack;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -21,7 +25,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -144,9 +152,9 @@ public class AudioRecorder extends AppCompatActivity {
                 Iplay.setVisibility(View.VISIBLE);
                 aStop.setVisibility(View.VISIBLE);
                 checkOn.setImageResource(R.drawable.minstop1);
-                recordAudio();
                 onRecord.setEnabled(false);
                 onRecord.setVisibility(View.GONE);
+                recordAudio();
                 recordCheck = !recordCheck;
             }
 
@@ -156,7 +164,7 @@ public class AudioRecorder extends AppCompatActivity {
         aStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(recordCheck==false){
+                if(recordCheck==false&&playCheck==true){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
@@ -216,7 +224,8 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
-    // 녹음 중단
+
+    //녹음 중단
     private void stopRecording() {
         if (recorder != null) {
             recorder.stop();

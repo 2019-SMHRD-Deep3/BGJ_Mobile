@@ -16,12 +16,15 @@ import android.widget.Toolbar;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.zip.Inflater;
+
 public class MenuActivity extends AppCompatActivity {
 
     ImageView menu1, menu2, menu3;
     String id;
     Button Pop;
     Intent intent;
+    MenuInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +73,12 @@ public class MenuActivity extends AppCompatActivity {
     // 메뉴 객체 사용연결
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mainmenu,menu);
+        inflater = getMenuInflater();
+        if(id==null){
+            inflater.inflate(R.menu.popmenu,menu);
+        }else{
+            inflater.inflate(R.menu.logmenu,menu);
+        }
         // return은 반드시 true로 줄 것
         return true;
     }
@@ -92,32 +99,29 @@ public class MenuActivity extends AppCompatActivity {
 
     // 메뉴 이벤트 사용
     public void mpop(View v){
-        // 팝업 메뉴 객체 생성
-        PopupMenu popup = new PopupMenu(this, v);
-        // XML 파일에 정의해둔 메뉴 전개자 선언
-        MenuInflater inflater = popup.getMenuInflater();
-        Menu menu = popup.getMenu();
-        // XML의 메뉴 가져오기
+            // 팝업 메뉴 객체 생성
+            PopupMenu popup = new PopupMenu(this, v);
+            // XML 파일에 정의해둔 메뉴 전개자 선언
+            MenuInflater inflater = popup.getMenuInflater();
+            Menu menu = popup.getMenu();
+            // XML의 메뉴 가져오기
+            inflater.inflate(R.menu.popmenu, menu);
 
-        inflater.inflate(R.menu.popmenu, menu);
-
-        // 메뉴 안에서 클릭이벤트 발생시 처리
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            // 메뉴 안에서 클릭이벤트 발생시 처리
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
                 switch(item.getItemId()){
                     case R.id.login:
-
                             intent = new Intent(v.getContext(), LoginActivity.class);
                             startActivity(intent);
-
                         break;
                 }
-
                 return false;
             }
         });
+
         popup.show();
     }
 
