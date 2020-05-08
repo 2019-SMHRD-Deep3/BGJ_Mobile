@@ -21,11 +21,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -83,8 +78,6 @@ public class AudioRecorder extends AppCompatActivity {
 
 
 
-        //gigi = findViewById(R.id.GGGG);
-
         ArrayList<String> voice = new ArrayList<>();
 
         voice.add("첫번째");
@@ -114,7 +107,6 @@ public class AudioRecorder extends AppCompatActivity {
                     Toast.makeText(AudioRecorder.this,
                             "첫 문장입니다.", Toast.LENGTH_SHORT).show();
                 }
-                mStartRecording = !mStartRecording;
             }
         });
 
@@ -132,7 +124,6 @@ public class AudioRecorder extends AppCompatActivity {
                     Toast.makeText(AudioRecorder.this,
                             "마지막 문장입니다.", Toast.LENGTH_SHORT).show();
                 }
-                mStartPlaying = !mStartPlaying;
             }
         });
 
@@ -167,7 +158,7 @@ public class AudioRecorder extends AppCompatActivity {
         aStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(recordCheck==false){
+                if(recordCheck==false&&playCheck==true){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
@@ -204,75 +195,6 @@ public class AudioRecorder extends AppCompatActivity {
             }
         });
 
-
-
-        // (사운드) 버튼별 기능
-        // 녹음 실행 / 녹음 중단
-//        Orecord.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(recordCheck){
-//                    recordAudio();
-//                }else{
-//                    T.setEnabled(false);
-//                    stopRecording();
-//                }
-//                recordCheck = !recordCheck;
-//            }
-//        });
-//
-//        t3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(recordCheck&&Rcheck){
-//                    recordAudio();
-//                    T.setVisibility(View.VISIBLE);
-//                    t2.setVisibility(View.VISIBLE);
-//                    loo.setImageResource(R.drawable.minstop1);
-//                    Rcheck=!Rcheck;
-//                }else if(recordCheck&&Rcheck==false){
-//                        recordAudio();
-//                    recordCheck = !recordCheck;
-//                }else{
-//                    stopRecording();
-//                }
-//            }
-//        });
-
-        // 일시 중단 / 재실행
-//        Ocheck.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(release){
-//                    pauseAudio();
-//                }else{
-//                    resumeAudio();
-//                }
-//            }
-//        });
-//        T.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(release){
-//                    pauseAudio();
-//                }else{
-//                    resumeAudio();
-//                }
-//            }
-//        });
-
-        // 재생 실행 / 재생 중단
-//        Oplay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(playCheck){
-//                    playAudio();
-//                }else{
-//                    stopAudio();
-//                }
-//                playCheck = !playCheck;
-//            }
-//        });
     }
 
     // 녹음 실행
@@ -297,7 +219,8 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
-    // 녹음 중단
+
+    //녹음 중단
     private void stopRecording() {
         if (recorder != null) {
             recorder.stop();
@@ -307,6 +230,7 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
+    // 파일 재생
     private void playAudio() {
         try {
             closePlayer();
@@ -348,15 +272,12 @@ public class AudioRecorder extends AppCompatActivity {
     }
 
 
-
     public void closePlayer() {
         if (player != null) {
             player.release();
             player = null;
         }
     }
-
-
 
     public void permissionCheck(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
@@ -369,7 +290,124 @@ public class AudioRecorder extends AppCompatActivity {
         FileUploadUtils  f= new FileUploadUtils();
     }
 
-    //사용하지 않는 코드
+    // 사용하지 않는 코드
+    // 수정 이전 녹음기능 코드
+//        iplay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                playAudio();
+//            }
+//        });
+//
+//        ipause.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                pauseAudio();
+//            }
+//        });
+//
+//        irestart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                resumeAudio();
+//            }
+//        });
+//
+//        istop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                stopAudio();
+//            }
+//        });
+//
+//        irecord.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                recordAudio();
+//            }
+//        });
+//
+//        irecordStop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                stopRecording();
+//            }
+//        });
+    // 수정 이전 녹음 코드
+    //        iplay = findViewById(R.id.Iplay);
+//        ipause = findViewById(R.id.Ipause);
+//        irestart = findViewById(R.id.Irestart);
+//        istop = findViewById(R.id.Istop);
+//        irecord = findViewById(R.id.Irecord);
+//        irecordStop = findViewById(R.id.IrecordStop);
+    // (사운드) 버튼별 기능
+    // 녹음 실행 / 녹음 중단
+//        Orecord.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(recordCheck){
+//                    recordAudio();
+//                }else{
+//                    T.setEnabled(false);
+//                    stopRecording();
+//                }
+//                recordCheck = !recordCheck;
+//            }
+//        });
+//
+//        t3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(recordCheck&&Rcheck){
+//                    recordAudio();
+//                    T.setVisibility(View.VISIBLE);
+//                    t2.setVisibility(View.VISIBLE);
+//                    loo.setImageResource(R.drawable.minstop1);
+//                    Rcheck=!Rcheck;
+//                }else if(recordCheck&&Rcheck==false){
+//                        recordAudio();
+//                    recordCheck = !recordCheck;
+//                }else{
+//                    stopRecording();
+//                }
+//            }
+//        });
+
+    // 일시 중단 / 재실행
+//        Ocheck.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(release){
+//                    pauseAudio();
+//                }else{
+//                    resumeAudio();
+//                }
+//            }
+//        });
+//        T.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(release){
+//                    pauseAudio();
+//                }else{
+//                    resumeAudio();
+//                }
+//            }
+//        });
+
+    // 재생 실행 / 재생 중단
+//        Oplay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(playCheck){
+//                    playAudio();
+//                }else{
+//                    stopAudio();
+//                }
+//                playCheck = !playCheck;
+//            }
+//        });
+
 
 //        LinearLayout ll = new LinearLayout(this);
 //        recordButton = new RecordButton(this);

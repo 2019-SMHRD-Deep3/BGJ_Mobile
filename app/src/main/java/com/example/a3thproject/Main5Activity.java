@@ -62,6 +62,7 @@ public class Main5Activity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
 
+
         img = findViewById(R.id.gg);
 
 

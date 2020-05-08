@@ -44,8 +44,7 @@
         android:id="@+id/before"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginStart="52dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/iPlay"
         app:layout_constraintTop_toBottomOf="@+id/voice"
         app:srcCompat="@drawable/left" />
 
@@ -53,8 +52,7 @@
         android:id="@+id/after"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/allStop"
         app:layout_constraintTop_toBottomOf="@+id/voice"
         app:srcCompat="@drawable/right_f" />
 
