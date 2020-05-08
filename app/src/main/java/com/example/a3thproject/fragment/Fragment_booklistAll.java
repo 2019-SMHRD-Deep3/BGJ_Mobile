@@ -46,7 +46,7 @@ public class Fragment_booklistAll extends Fragment {
         items = new ArrayList<>();
 
         items.clear();
-        path = "http://172.30.1.17:8081/Podo/library/l";
+        path = "http://172.30.1.19:8081/Podo/library/l";
         for (int n = 0; n < arr.length; n++) {
             items.add(new titleDTO(arr[n], path + n + "/0.jpg"));
             Log.v("dataa", arr[n]);

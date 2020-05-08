@@ -19,7 +19,7 @@ public class FileUploadUtils {
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("files", tempSelectFile.getName(),RequestBody.create(MultipartBody.FORM,tempSelectFile)).build();
 
-        Request request = new Request.Builder().url("http://172.30.1.17:8081/Podo/Audio").post(requestBody).build();
+        Request request = new Request.Builder().url("http://172.30.1.19:8081/Podo/Audio").post(requestBody).build();
 
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
