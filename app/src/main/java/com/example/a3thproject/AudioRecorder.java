@@ -9,10 +9,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.media.AudioFormat;
-import android.media.AudioManager;
-import android.media.AudioRecord;
-import android.media.AudioTrack;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Bundle;
@@ -25,15 +21,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class AudioRecorder extends AppCompatActivity {
+    boolean mStartRecording = true;
+    boolean mStartPlaying = true;
 
     private static final String TAG = "AudioRecorder";
 
@@ -152,9 +146,9 @@ public class AudioRecorder extends AppCompatActivity {
                 Iplay.setVisibility(View.VISIBLE);
                 aStop.setVisibility(View.VISIBLE);
                 checkOn.setImageResource(R.drawable.minstop1);
+                recordAudio();
                 onRecord.setEnabled(false);
                 onRecord.setVisibility(View.GONE);
-                recordAudio();
                 recordCheck = !recordCheck;
             }
 
@@ -170,8 +164,9 @@ public class AudioRecorder extends AppCompatActivity {
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
                     startActivityForResult(intent,101);
                 }else if(recordCheck==true&&playCheck==false){
-                    stopAudio();
+
                     Iplay.setImageResource(R.drawable.play_t);
+                    stopAudio();
                 }
                 recordCheck = !recordCheck;
                 release = !release;
