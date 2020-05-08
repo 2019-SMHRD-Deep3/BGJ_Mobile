@@ -89,7 +89,7 @@ public class Main2Activity extends FragmentActivity {
 
    String uploadFilePath ="";//경로를 모르겠으면, 갤러리 어플리케이션 가서 메뉴->상세 정보
 
-    final String uploadFileName = "AudioRecordTest"; //전송하고자하는 파일 이름
+    final String uploadFileName = "AudioRecordTest.mp4"; //전송하고자하는 파일 이름
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

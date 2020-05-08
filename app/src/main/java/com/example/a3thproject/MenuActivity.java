@@ -33,6 +33,8 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.sql.DriverManager.println;
+
 public class MenuActivity extends AppCompatActivity {
 
     ImageView menu1, menu2, menu3;
@@ -41,7 +43,7 @@ public class MenuActivity extends AppCompatActivity {
     Intent intent;
     static RequestQueue requestQueue;
     MenuInflater inflater;
-    boolean getLog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,8 +169,8 @@ public class MenuActivity extends AppCompatActivity {
             }
 //            inflater.inflate(R.menu.popmenu, menu); // XML의 메뉴 가져오기
 
-            // 메뉴 안에서 클릭이벤트 발생시 처리
-            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        // 메뉴 안에서 클릭이벤트 발생시 처리
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
