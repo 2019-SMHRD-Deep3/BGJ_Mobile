@@ -52,7 +52,8 @@ public class MenuActivity extends AppCompatActivity {
         actionBar.hide();
 
         intent = getIntent();
-        if(id!=null){
+        id=".";
+        if(intent.getStringExtra("id")!=null){
             id = intent.getStringExtra("id");
         }
 
@@ -160,7 +161,7 @@ public class MenuActivity extends AppCompatActivity {
             MenuInflater inflater = popup.getMenuInflater();  // XML 파일에 정의해둔 메뉴 전개자 선언
             Menu menu = popup.getMenu();
 
-            if(id==null){
+            if(id.equals(".")){
                 Log.v("hhd","Login");
                 inflater.inflate(R.menu.popmenu,menu);
             }else{
