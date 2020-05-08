@@ -42,6 +42,7 @@ public class MenuActivity extends AppCompatActivity {
     Button Pop;
     Intent intent;
     static RequestQueue requestQueue;
+    MenuInflater inflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,8 +138,6 @@ public class MenuActivity extends AppCompatActivity {
     // 메뉴 객체 사용연결
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.popmenu,menu);
         // return은 반드시 true로 줄 것
         return true;
     }
@@ -150,23 +149,26 @@ public class MenuActivity extends AppCompatActivity {
             case R.id.menu1:
                 Intent goIntent = new Intent(this, LoginActivity.class);
                 startActivity(goIntent);
-//            case R.id.menu2:
-//                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
-//                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     // 메뉴 이벤트 사용
     public void mpop(View v){
-        // 팝업 메뉴 객체 생성
-        PopupMenu popup = new PopupMenu(this, v);
-        // XML 파일에 정의해둔 메뉴 전개자 선언
-        MenuInflater inflater = popup.getMenuInflater();
-        Menu menu = popup.getMenu();
-        // XML의 메뉴 가져오기
 
-        inflater.inflate(R.menu.popmenu, menu);
+            PopupMenu popup = new PopupMenu(this, v); // 팝업 메뉴 객체 생성
+
+            MenuInflater inflater = popup.getMenuInflater();  // XML 파일에 정의해둔 메뉴 전개자 선언
+            Menu menu = popup.getMenu();
+
+            if(id==null){
+                Log.v("hhd","Login");
+                inflater.inflate(R.menu.popmenu,menu);
+            }else{
+                Log.v("hhd","Logout");
+                inflater.inflate(R.menu.logmenu,menu);
+            }
+//            inflater.inflate(R.menu.popmenu, menu); // XML의 메뉴 가져오기
 
         // 메뉴 안에서 클릭이벤트 발생시 처리
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -181,7 +183,6 @@ public class MenuActivity extends AppCompatActivity {
 
                         break;
                 }
-
                 return false;
             }
         });
