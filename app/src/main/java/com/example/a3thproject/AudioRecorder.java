@@ -152,7 +152,7 @@ public class AudioRecorder extends AppCompatActivity {
         onRecord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onPlay.setVisibility(View.VISIBLE);
+                Iplay.setVisibility(View.VISIBLE);
                 aStop.setVisibility(View.VISIBLE);
                 checkOn.setImageResource(R.drawable.minstop1);
                 recordAudio();
@@ -173,8 +173,9 @@ public class AudioRecorder extends AppCompatActivity {
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
                     startActivityForResult(intent,101);
                 }else if(recordCheck==true&&playCheck==false){
-                    stopAudio();
+
                     Iplay.setImageResource(R.drawable.play_t);
+                    stopAudio();
                 }
                 recordCheck = !recordCheck;
                 release = !release;
@@ -346,12 +347,7 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
-    private void stopAudio() {
-        if (player != null && player.isPlaying()) {
-            player.stop();
-            Toast.makeText(this, "중지됨.", Toast.LENGTH_SHORT).show();
-        }
-    }
+
 
     public void closePlayer() {
         if (player != null) {
