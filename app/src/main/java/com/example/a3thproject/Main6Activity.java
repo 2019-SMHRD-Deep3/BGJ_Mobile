@@ -79,12 +79,19 @@ public class Main6Activity extends AppCompatActivity {
                     DoFileUpload(serverURL, images_uri.get(i).getPath());
                     Log.v("1차", serverURL);
                     Log.v("1차",images_uri.get(i).toString().substring(39));
-
+                    Toast.makeText(Main6Activity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
                     Log.d("Send", "Success");
                 }
 
+                Intent intent1 = new Intent(getApplicationContext(), MenuActivity.class);
+                intent1.putExtra("id", id);
+                startActivity(intent1);
+
             }
         }).start();
+
+
+
 
 
 
