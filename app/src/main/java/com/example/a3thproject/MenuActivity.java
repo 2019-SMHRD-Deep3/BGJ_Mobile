@@ -38,7 +38,7 @@ import static java.sql.DriverManager.println;
 public class MenuActivity extends AppCompatActivity {
 
     ImageView menu1, menu2, menu3;
-    String id = "";
+    String id ;
     Button Pop;
     Intent intent;
     static RequestQueue requestQueue;
@@ -49,13 +49,15 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
         intent = getIntent();
-        if(id!=null){
-            id = intent.getStringExtra("id");
+
+
+
+        id = intent.getStringExtra("id");
+
+        if(id==null){
+            id = ".";
         }
-
-
 
         Pop = findViewById(R.id.btnOP);
         menu1 = findViewById(R.id.menu1);
@@ -133,11 +135,18 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
+
+
     // 메뉴 객체 사용연결
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.mainmenu,menu);
+        Toast.makeText(this,"ㅇㅇ",Toast.LENGTH_SHORT);
+        if(id==null){
+            inflater.inflate(R.menu.popmenu,menu);
+        }else{
+            inflater.inflate(R.menu.logmenu,menu);
+        }
         // return은 반드시 true로 줄 것
         return true;
     }
@@ -145,6 +154,7 @@ public class MenuActivity extends AppCompatActivity {
     // 메뉴 객체 이벤트
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()){
             case R.id.menu1:
                 Intent goIntent = new Intent(this, LoginActivity.class);
@@ -174,10 +184,8 @@ public class MenuActivity extends AppCompatActivity {
 
                 switch(item.getItemId()){
                     case R.id.login:
-
                             intent = new Intent(v.getContext(), LoginActivity.class);
                             startActivity(intent);
-
                         break;
                 }
 

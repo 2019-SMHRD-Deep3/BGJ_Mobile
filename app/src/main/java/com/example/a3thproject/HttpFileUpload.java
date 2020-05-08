@@ -37,7 +37,7 @@ public class HttpFileUpload implements Runnable {
     }
 
     void Sending(){
-        String iFileName = "AndroidRecordTest.mp3";
+        String iFileName = "AndroidRecordTest.mp4";
         String lineEnd = "\r\n";
         String twoHyphens = "--";
         String boundary = "*****";
