@@ -15,22 +15,22 @@
         android:ems="10"
         android:hint="User ID"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/pw"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar1" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginBottom="172dp"
         android:ems="10"
         android:hint="User PassWord"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/logins"
         app:layout_constraintEnd_toEndOf="@+id/text"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/text"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/text" />
 
     <Button
         android:id="@+id/uInfo"

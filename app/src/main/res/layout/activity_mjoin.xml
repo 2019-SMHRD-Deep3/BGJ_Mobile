@@ -8,10 +8,21 @@
     tools:context=".mainOption.mJoinActivity">
 
     <EditText
+        android:id="@+id/pw2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toBottomOf="@+id/pw" />
+
+    <EditText
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="96dp"
         android:ems="10"
         android:hint="계정입력"
         android:inputType="textPersonName"
@@ -23,20 +34,20 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="이름"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/pw"
-        app:layout_constraintTop_toBottomOf="@+id/pw" />
+        app:layout_constraintStart_toStartOf="@+id/id"
+        app:layout_constraintTop_toBottomOf="@+id/pw2" />
 
     <EditText
         android:id="@+id/pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
-        android:hint="비밀번호 8자리 이상"
+        android:hint="비밀번호"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="@+id/id"
         app:layout_constraintTop_toBottomOf="@+id/id" />
@@ -45,11 +56,11 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:hint="E-Mail"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintStart_toStartOf="@+id/id"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button
@@ -113,5 +124,19 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar1" />
+
+    <Button
+        android:id="@+id/IdCheck"
+        android:layout_width="78dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/toolbar2"
+        android:outlineAmbientShadowColor="#FDFDFD"
+        android:text="중복확인"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/id"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

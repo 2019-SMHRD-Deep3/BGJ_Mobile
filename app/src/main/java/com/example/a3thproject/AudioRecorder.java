@@ -26,6 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class AudioRecorder extends AppCompatActivity {
+    boolean mStartRecording = true;
+    boolean mStartPlaying = true;
 
     private static final String TAG = "AudioRecorder";
 
@@ -156,14 +158,15 @@ public class AudioRecorder extends AppCompatActivity {
         aStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(recordCheck==false){
+                if(recordCheck==false&&playCheck==true){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
                     Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
                     startActivityForResult(intent,101);
                 }else if(recordCheck==true&&playCheck==false){
-                    stopAudio();
+
                     Iplay.setImageResource(R.drawable.play_t);
+                    stopAudio();
                 }
                 recordCheck = !recordCheck;
                 release = !release;
@@ -216,7 +219,8 @@ public class AudioRecorder extends AppCompatActivity {
         }
     }
 
-    // 녹음 중단
+
+    //녹음 중단
     private void stopRecording() {
         if (recorder != null) {
             recorder.stop();
