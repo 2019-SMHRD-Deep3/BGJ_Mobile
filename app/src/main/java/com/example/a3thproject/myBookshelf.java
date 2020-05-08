@@ -40,7 +40,7 @@ public class myBookshelf extends AppCompatActivity {
         bookList = findViewById(R.id.vBook);
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),
-                tab.getTabCount());
+                tab.getTabCount(),intent.getStringExtra("library"),intent.getStringExtra("id"));
 
         bookList.setAdapter(pageAdapter);
         bookList.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
