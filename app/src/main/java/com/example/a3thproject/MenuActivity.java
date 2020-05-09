@@ -48,7 +48,7 @@ public class MenuActivity extends AppCompatActivity {
         actionBar.hide();
 
         intent = getIntent();
-        id =".";
+        id=".";
         if(intent.getStringExtra("id")!=null){
             id = intent.getStringExtra("id");
         }

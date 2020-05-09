@@ -8,7 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -16,6 +20,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -47,6 +53,7 @@ public class PickPictureActivity extends AppCompatActivity {
     private  Button btn_server;
     private EditText addEdit;
     private  EditText addEditText;
+    Intent intent;
 
 
     @Override
@@ -56,8 +63,11 @@ public class PickPictureActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        Intent intent = getIntent();
-        id = intent.getStringExtra("id");
+        intent = getIntent();
+        id=".";
+        if(intent.getStringExtra("id")!=null){
+            id = intent.getStringExtra("id");
+        }
 
 
         img = findViewById(R.id.gg);
@@ -72,6 +82,7 @@ public class PickPictureActivity extends AppCompatActivity {
        // setRxMultiShowButton();
 
         setServerButton();
+
 
 
 
@@ -295,5 +306,60 @@ public class PickPictureActivity extends AppCompatActivity {
 
 
         }
+
+    // 메뉴 객체 사용연결
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // return은 반드시 true로 줄 것
+        return true;
+    }
+
+    // 메뉴 객체 이벤트
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu1:
+                Intent goIntent = new Intent(this, LoginActivity.class);
+                startActivity(goIntent);
+//            case R.id.menu2:
+//                Toast.makeText(this,"테스트중2",Toast.LENGTH_SHORT).show();
+//                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    // 메뉴 이벤트 사용
+    public void mpop(View v){
+        // 팝업 메뉴 객체 생성
+        PopupMenu popup = new PopupMenu(this, v);
+        // XML 파일에 정의해둔 메뉴 전개자 선언
+        MenuInflater inflater = popup.getMenuInflater();
+        Menu menu = popup.getMenu();
+        // XML의 메뉴 가져오기
+        if(id.equals(".")){
+            Log.v("hhd","Login");
+            inflater.inflate(R.menu.popmenu,menu);
+        }else{
+            Log.v("hhd","Logout");
+            inflater.inflate(R.menu.logmenu,menu);
+        }
+        //inflater.inflate(R.menu.popmenu, menu);
+        // 메뉴 안에서 클릭이벤트 발생시 처리
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                switch(item.getItemId()){
+                    case R.id.login:
+                        intent = new Intent(v.getContext(), LoginActivity.class);
+                        startActivity(intent);
+                        break;
+                }
+
+                return false;
+            }
+        });
+        popup.show();
+    }
 
 }

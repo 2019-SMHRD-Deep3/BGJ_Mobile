@@ -28,6 +28,7 @@ public class myBookshelf extends AppCompatActivity {
     TabLayout tab;
     ViewPager bookList;
     Intent intent;
+    String id = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,12 @@ public class myBookshelf extends AppCompatActivity {
 
         tab = findViewById(R.id.tabLayout);
         bookList = findViewById(R.id.vBook);
+
+        intent = getIntent();
+        id=".";
+        if(intent.getStringExtra("id")!=null){
+            id = intent.getStringExtra("id");
+        }
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(),
                 tab.getTabCount(),intent.getStringExtra("library"),intent.getStringExtra("id"));
@@ -67,8 +74,6 @@ public class myBookshelf extends AppCompatActivity {
     // 메뉴 객체 사용연결
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.popmenu,menu);
         // return은 반드시 true로 줄 것
         return true;
     }
@@ -95,7 +100,14 @@ public class myBookshelf extends AppCompatActivity {
         MenuInflater inflater = popup.getMenuInflater();
         Menu menu = popup.getMenu();
         // XML의 메뉴 가져오기
-        inflater.inflate(R.menu.popmenu, menu);
+        if(id.equals(".")){
+            Log.v("hhd","Login");
+            inflater.inflate(R.menu.popmenu,menu);
+        }else{
+            Log.v("hhd","Logout");
+            inflater.inflate(R.menu.logmenu,menu);
+        }
+        //inflater.inflate(R.menu.popmenu, menu);
         // 메뉴 안에서 클릭이벤트 발생시 처리
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override

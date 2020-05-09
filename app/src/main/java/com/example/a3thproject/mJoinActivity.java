@@ -91,7 +91,6 @@ public class mJoinActivity extends AppCompatActivity {
         pw2 = findViewById(R.id.pw2);
         pwcheck = findViewById(R.id.pwcheck);
         name = findViewById(R.id.name);
-        email = findViewById(R.id.email);
         btn = findViewById(R.id.btnjoin);
         btn2 = findViewById(R.id.btncancle);
         btncheck = findViewById(R.id.IdCheck);
