@@ -129,4 +129,14 @@
         app:layout_constraintTop_toTopOf="@+id/id"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/pwcheck"
+        android:layout_width="78dp"
+        android:layout_height="32dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pw2"
+        app:layout_constraintStart_toEndOf="@+id/pw2"
+        app:layout_constraintTop_toTopOf="@+id/pw2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

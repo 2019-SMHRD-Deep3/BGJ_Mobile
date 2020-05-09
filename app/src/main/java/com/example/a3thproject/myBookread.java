@@ -92,7 +92,7 @@ public class myBookread extends AppCompatActivity {
 ////        webSettings.setUseWideViewPort(true);
 
         //webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num="+num);
-        webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
+        webView.loadUrl("http://172.30.1.19:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
 
 
 
@@ -103,7 +103,7 @@ public class myBookread extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     Toast.makeText(getApplicationContext(), "왼쪽 클릭", Toast.LENGTH_LONG).show();
                     page = -1;
-                    webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
+                    webView.loadUrl("http://172.30.1.19:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
 
                 }
                 return false;
@@ -116,7 +116,7 @@ public class myBookread extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     Toast.makeText(getApplicationContext(), "오른쪽 클릭", Toast.LENGTH_LONG).show();
                     page = 1;
-                    webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
+                    webView.loadUrl("http://172.30.1.19:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
 
                 }
                 return false;
