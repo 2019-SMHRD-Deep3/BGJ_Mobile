@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.a3thproject.Main5Activity;
+import com.example.a3thproject.PickPictureActivity;
 import com.example.a3thproject.R;
 
 public class Fragment_nonresister extends Fragment {
@@ -33,7 +33,7 @@ public class Fragment_nonresister extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getContext(), Main5Activity.class);
+                Intent intent = new Intent(getContext(), PickPictureActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
 

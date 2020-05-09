@@ -49,7 +49,7 @@ public class Fragment_booklistMy extends Fragment {
         items = new ArrayList<>();
 
         items.clear();
-        path = "http://172.30.1.19:8081/Podo/"+id+"/"+id+"_";
+        path = "http://172.30.1.17:8081/Podo/"+id+"/"+id+"_";
         for (int n = 0; n < arr.length; n++) {
 
             items.add(new titleDTO(arr[n], path + n + "/0.jpg"));

@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
@@ -33,10 +31,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gun0912.tedbottompicker.TedBottomPicker;
-import gun0912.tedbottompicker.TedRxBottomPicker;
 import io.reactivex.disposables.Disposable;
 
-public class Main5Activity extends AppCompatActivity {
+public class PickPictureActivity extends AppCompatActivity {
 
     private ImageView iv_image, img;
     private List<Uri> selectedUriList;
@@ -55,7 +52,7 @@ public class Main5Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
+        setContentView(R.layout.activity_pick_picture);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
@@ -88,7 +85,7 @@ public class Main5Activity extends AppCompatActivity {
             public void onClick(View view) {
 
                 title = addEditText.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), Main6Activity.class);
+                Intent intent = new Intent(getApplicationContext(), SendPictureActivity.class);
                 intent.putExtra("imagelist", images_uri);
                 intent.putExtra("id",id);
                 intent.putExtra("title", title);
@@ -126,7 +123,7 @@ public class Main5Activity extends AppCompatActivity {
                 @Override
                 public void onPermissionGranted() {
 
-                    TedBottomPicker.with(Main5Activity.this)
+                    TedBottomPicker.with(PickPictureActivity.this)
                             //.setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
                             .setPeekHeight(1600)
                             .showTitle(false)
@@ -161,7 +158,7 @@ public class Main5Activity extends AppCompatActivity {
                 @Override
                 public void onPermissionDenied(ArrayList<String> deniedPermissions) {
 
-                    Toast.makeText(Main5Activity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PickPictureActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
                 }
             };
 
@@ -236,7 +233,7 @@ public class Main5Activity extends AppCompatActivity {
     }*/
 
     private void checkPermission(PermissionListener permissionlistener) {
-        TedPermission.with(Main5Activity.this)
+        TedPermission.with(PickPictureActivity.this)
                 .setPermissionListener(permissionlistener)
                 .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
                 .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -285,7 +282,7 @@ public class Main5Activity extends AppCompatActivity {
 
             LinearLayout topLL = (LinearLayout) findViewById(R.id.dynamicArea);
 
-            addEditText = new EditText(Main5Activity.this);
+            addEditText = new EditText(PickPictureActivity.this);
             addEditText.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
             addEditText.setPadding(20, 10, 10, 10);

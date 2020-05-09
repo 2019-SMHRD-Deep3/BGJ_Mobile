@@ -4,14 +4,10 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import java.io.DataOutputStream;
@@ -21,7 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Main2Activity extends FragmentActivity {
+public class SendAudioActivity extends FragmentActivity {
 
 
 
@@ -30,7 +26,7 @@ public class Main2Activity extends FragmentActivity {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_main2);
+//        setContentView(R.layout.activity_send_audio);
 //
 //        btnImageSend = findViewById(R.id.button6);
 //        btnImageSend.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +90,7 @@ public class Main2Activity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-              setContentView(R.layout.activity_main2);
+              setContentView(R.layout.activity_send_audio);
 
         messageText  = (TextView)findViewById(R.id.messageText);
         uploadButton = findViewById(R.id.button6);
@@ -107,7 +103,7 @@ public class Main2Activity extends FragmentActivity {
 
         /************* Php script path ****************/
 
-        upLoadServerUri = "http://172.30.1.19:8081/Podo/Camera";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://172.30.1.17:8081/Podo/Camera";//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
@@ -117,7 +113,7 @@ public class Main2Activity extends FragmentActivity {
 
 
 
-                dialog = ProgressDialog.show(Main2Activity.this, "", "Uploading file...", true);
+                dialog = ProgressDialog.show(SendAudioActivity.this, "", "Uploading file...", true);
                                 new Thread(new Runnable() {
 
                                     public void run() {
@@ -244,7 +240,7 @@ public class Main2Activity extends FragmentActivity {
                                     +uploadFileName;
 
                             messageText.setText(msg);
-                            Toast.makeText(Main2Activity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SendAudioActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -261,7 +257,7 @@ public class Main2Activity extends FragmentActivity {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         messageText.setText("MalformedURLException Exception : check script url.");
-                        Toast.makeText(Main2Activity.this, "MalformedURLException",
+                        Toast.makeText(SendAudioActivity.this, "MalformedURLException",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -274,7 +270,7 @@ public class Main2Activity extends FragmentActivity {
                 runOnUiThread(new Runnable() {
                     public void run() {
                         messageText.setText("Got Exception : see logcat ");
-                        Toast.makeText(Main2Activity.this, "Got Exception : see logcat ",
+                        Toast.makeText(SendAudioActivity.this, "Got Exception : see logcat ",
                                 Toast.LENGTH_SHORT).show();
                     }
 

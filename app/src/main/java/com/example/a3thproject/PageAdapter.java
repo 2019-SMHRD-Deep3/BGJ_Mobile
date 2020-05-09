@@ -12,8 +12,7 @@ import com.example.a3thproject.fragment.Fragment_booklistAll;
 import com.example.a3thproject.fragment.Fragment_booklistMy;
 import com.example.a3thproject.fragment.Fragment_nonlogin;
 import com.example.a3thproject.fragment.Fragment_nonresister;
-import com.example.a3thproject.pageview.SwingPage1;
-import com.example.a3thproject.pageview.SwingPage2;
+
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
@@ -76,15 +75,6 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         }
 
 
-        // switch로 탭 전환코드
-//        if(position == 0){
-//            SwingPage1 swingPage1 = new SwingPage1();
-//            return swingPage1;
-//        }else if(position == 1){
-//            return new SwingPage2();
-//        }else {
-//            return null;
-//        }
 
     }
 

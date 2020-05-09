@@ -6,7 +6,7 @@
     android:layout_height="300dp"
     android:background="#FFFFFF"
 
-    tools:context=".Main2Activity">
+    tools:context=".SendAudioActivity">
 
     <TextView
         android:id="@+id/messageText"

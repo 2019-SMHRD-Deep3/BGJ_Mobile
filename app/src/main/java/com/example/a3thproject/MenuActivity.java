@@ -1,7 +1,6 @@
 package com.example.a3thproject;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -12,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,8 +30,6 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.sql.DriverManager.println;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -75,7 +71,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String url = "http://172.30.1.19:8081/Podo/GetBookOfLibrary";
+                String url = "http://172.30.1.17:8081/Podo/GetBookOfLibrary";
 
 
                 StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -119,7 +115,7 @@ public class MenuActivity extends AppCompatActivity {
         menu2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, Main5Activity.class);
+                Intent intent = new Intent(MenuActivity.this, PickPictureActivity.class);
                 intent.putExtra("id",id);
                 startActivityForResult(intent,101);
 
@@ -161,7 +157,7 @@ public class MenuActivity extends AppCompatActivity {
             MenuInflater inflater = popup.getMenuInflater();  // XML 파일에 정의해둔 메뉴 전개자 선언
             Menu menu = popup.getMenu();
 
-            if(id==null){
+            if(id.equals(".")){
                 Log.v("hhd","Login");
                 inflater.inflate(R.menu.popmenu,menu);
             }else{

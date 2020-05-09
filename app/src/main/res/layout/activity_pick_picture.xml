@@ -7,7 +7,7 @@
     android:background="#EDE3FE"
     android:orientation="vertical"
 
-    tools:context="com.example.a3thproject.Main5Activity">
+    tools:context="com.example.a3thproject.PickPictureActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar1"

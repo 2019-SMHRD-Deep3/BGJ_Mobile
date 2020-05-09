@@ -149,7 +149,7 @@ public class mJoinActivity extends AppCompatActivity {
     }
 
     public void testJson(){
-        String url = "http://172.30.1.27:8081/Podo/JoinService";
+        String url = "http://172.30.1.17:8081/Podo/JoinService";
 
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
@@ -191,7 +191,7 @@ public class mJoinActivity extends AppCompatActivity {
     public void testJson2(){
 
         Log.v("asdf", "1차");
-        String url = "http://172.30.1.27:8081/Podo/JoinIdCheck";
+        String url = "http://172.30.1.17:8081/Podo/JoinIdCheck";
 
         request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override

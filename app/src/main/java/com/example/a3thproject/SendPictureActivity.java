@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -22,7 +21,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Main6Activity extends AppCompatActivity {
+public class SendPictureActivity extends AppCompatActivity {
 
     ImageView imageView = null;
     Button button6 = null;
@@ -40,7 +39,7 @@ public class Main6Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main6);
+        setContentView(R.layout.activity_send_picture);
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
@@ -69,7 +68,7 @@ public class Main6Activity extends AppCompatActivity {
 
                     public void run() {
 
-                        dialog = ProgressDialog.show(Main6Activity.this, "", "Uploading file...", true);
+                        dialog = ProgressDialog.show(SendPictureActivity.this, "", "Uploading file...", true);
 
                     }
 
@@ -79,7 +78,7 @@ public class Main6Activity extends AppCompatActivity {
                     DoFileUpload(serverURL, images_uri.get(i).getPath());
                     Log.v("1차", serverURL);
                     Log.v("1차",images_uri.get(i).toString().substring(39));
-                    Toast.makeText(Main6Activity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SendPictureActivity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
                     Log.d("Send", "Success");
                 }
 

@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -161,7 +159,7 @@ public class AudioRecorder extends AppCompatActivity {
                 if(recordCheck==false&&playCheck==true){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
-                    Intent intent = new Intent(AudioRecorder.this, Main2Activity.class);
+                    Intent intent = new Intent(AudioRecorder.this, SendAudioActivity.class);
                     startActivityForResult(intent,101);
                 }else if(recordCheck==true&&playCheck==false){
 
