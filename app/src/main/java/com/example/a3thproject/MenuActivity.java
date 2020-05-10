@@ -185,7 +185,7 @@ public class MenuActivity extends AppCompatActivity {
             }else{
                 Log.v("hhd","Logout");
                 inflater.inflate(R.menu.logmenu,menu);
-                id = ".";
+
             }
 //            inflater.inflate(R.menu.popmenu, menu); // XML의 메뉴 가져오기
 
@@ -198,6 +198,8 @@ public class MenuActivity extends AppCompatActivity {
                             intent = new Intent(v.getContext(), LoginActivity.class);
                             startActivity(intent);
                         break;
+                    case R.id.logout:
+                            id = ".";
                 }
                 return false;
             }
