@@ -17,6 +17,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -28,10 +29,10 @@ import java.util.ArrayList;
 public class myBookread extends AppCompatActivity {
     WebView webView;
     WebSettings webSettings;
-    Button btn1, btn2;
     String id, where;
+    ImageView img1;
     int num;
-    int page = 0;
+    boolean check;
     WebChromeClient chromeClient;
 
     @SuppressLint("SourceLockedOrientationActivity")
@@ -39,9 +40,6 @@ public class myBookread extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bookread);
-        btn1 = findViewById(R.id.btn1);
-        btn2 = findViewById(R.id.btn2);
-
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         num = intent.getIntExtra("num",999);
@@ -88,41 +86,15 @@ public class myBookread extends AppCompatActivity {
 //        });
         chromeClient = new WebChromeClient();
         webView.setWebChromeClient(chromeClient);
-//        webSettings.setLoadWithOverviewMode(true);
-////        webSettings.setUseWideViewPort(true);
+
 
         //webView.loadUrl("http://172.30.1.17:8081/Podo/Book.jsp?num="+num);
-        webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
+        webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where);
 
 
 
 
-        btn1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Toast.makeText(getApplicationContext(), "왼쪽 클릭", Toast.LENGTH_LONG).show();
-                    page = -1;
-                    webView.loadUrl("http://172.30.1.17=:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
 
-                }
-                return false;
-            }
-        });
-
-        btn2.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    Toast.makeText(getApplicationContext(), "오른쪽 클릭", Toast.LENGTH_LONG).show();
-                    page = 1;
-                    webView.loadUrl("http://172.30.1.17:8081/Podo/Book2.jsp?id="+id+ "&num="+num + "&where="+where + "&page="+page);
-
-                }
-                return false;
-            }
-
-        });
 
 
     }

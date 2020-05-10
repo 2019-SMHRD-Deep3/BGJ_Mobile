@@ -44,7 +44,7 @@ public class SendPictureActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
         title = intent.getStringExtra("title");
-        serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id="+id+"&title="+title;
+        serverURL = "http://172.30.1.17:8081/Podo/AudioPrivacy?id="+id+"&title="+title + "&cnt=";
 
         images_uri = getIntent().getParcelableArrayListExtra("imagelist");
         Log.v("listuri",  String.valueOf(images_uri));
@@ -75,11 +75,11 @@ public class SendPictureActivity extends AppCompatActivity {
                 });
                 for (int i=0; i<images_uri.size();i++){
                     Log.v("1차","1");
-                    DoFileUpload(serverURL, images_uri.get(i).getPath());
-                    Log.v("1차", serverURL);
-                    Log.v("1차",images_uri.get(i).toString().substring(39));
-                    Toast.makeText(SendPictureActivity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
-                    Log.d("Send", "Success");
+                    DoFileUpload(serverURL + (images_uri.size()-i-1), images_uri.get(i).getPath());
+                    //Log.v("1차", serverURL);
+                    //Log.v("1차",images_uri.get(i).toString().substring(39));
+                    //Toast.makeText(SendPictureActivity.this, "이미지 전송 성공", Toast.LENGTH_SHORT).show();
+                    //Log.d("Send", "Success");
                 }
 
                 Intent intent1 = new Intent(getApplicationContext(), MenuActivity.class);
