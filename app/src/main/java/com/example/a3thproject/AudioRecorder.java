@@ -28,9 +28,10 @@ public class AudioRecorder extends AppCompatActivity {
     boolean mStartPlaying = true;
 
     private static final String TAG = "AudioRecorder";
+    private static String filename = null;
 
     MediaRecorder recorder;
-    String filename;
+
     MediaPlayer player;
 
     boolean playCheck = true;
@@ -40,7 +41,8 @@ public class AudioRecorder extends AppCompatActivity {
 
     int cnt = 0;
     int position = 0; // 다시 시작 기능을 위한 현재 재생 위치 확인 변수
-
+    String id;
+    Intent intent;
     // 뷰어 요소
     ImageView btnleft, btnright, checkOn,Iplay;
     Button onRecord, onPlay, aStop;
@@ -52,12 +54,15 @@ public class AudioRecorder extends AppCompatActivity {
         setContentView(R.layout.activity_audio_recorder);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-
+        intent = getIntent();
+        id = intent.getStringExtra("id");
         permissionCheck();
-
+/*
         File sdcard = Environment.getExternalStorageDirectory();
-        File file = new File(sdcard, "recorded.mp4");
-        filename = file.getAbsolutePath();
+        File file = new File(sdcard, "AudioRecordTest.mp3");
+        filename = file.getAbsolutePath();*/
+        filename = getExternalCacheDir().getAbsolutePath();
+        filename += "/AudioRecordTest.mp3";
         Log.d("TTST", "저장할 파일 명 : " + filename);
 
 //        Oplay = findViewById(R.id.oPlaying);
@@ -159,8 +164,9 @@ public class AudioRecorder extends AppCompatActivity {
                 if(recordCheck==false&&playCheck==true){
                     stopRecording();
                     checkOn.setImageResource(R.drawable.norecord_t);
-                    Intent intent = new Intent(AudioRecorder.this, SendAudioActivity.class);
-                    startActivityForResult(intent,101);
+                    Intent intent1 = new Intent(AudioRecorder.this, SendAudioActivity.class);
+                    intent1.putExtra("id",id);
+                    startActivityForResult(intent1,101);
                 }else if(recordCheck==true&&playCheck==false){
 
                     Iplay.setImageResource(R.drawable.play_t);
@@ -203,11 +209,11 @@ public class AudioRecorder extends AppCompatActivity {
          * 초당 15프레임 이라면 보통 8K(8000바이트) 정도가 한순간에 저장됨
          * 따라서 용량이 크므로, 압축할 필요가 있음 */
         recorder.setAudioSource(MediaRecorder.AudioSource.MIC); // 어디에서 음성 데이터를 받을 것인지
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); // 압축 형식 설정
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-        recorder.setOutputFile(filename);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); // 압축 형식 설정
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+            recorder.setOutputFile(filename);
 
-        try {
+            try {
             recorder.prepare();
             recorder.start();
 
@@ -283,6 +289,9 @@ public class AudioRecorder extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, 1);
         }
     }
+
+
+
 
     public void serverplay(){
         FileUploadUtils  f= new FileUploadUtils();

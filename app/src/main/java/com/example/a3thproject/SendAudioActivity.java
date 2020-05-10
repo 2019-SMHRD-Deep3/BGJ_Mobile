@@ -1,14 +1,16 @@
 package com.example.a3thproject;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.Fragment;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -17,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SendAudioActivity extends FragmentActivity {
+public class SendAudioActivity extends Fragment {
 
 
 
@@ -73,19 +75,20 @@ public class SendAudioActivity extends FragmentActivity {
 ////    }
 
         TextView messageText;
-
+        ImageView sendingAudioImg;
     Button uploadButton;
     int serverResponseCode = 0;
     ProgressDialog dialog = null;
     String upLoadServerUri = null;
-
+    Intent intent;
+    String id;
 
 
     /**********  File Path *************/
 
    String uploadFilePath ="";//경로를 모르겠으면, 갤러리 어플리케이션 가서 메뉴->상세 정보
 
-    final String uploadFileName = "AudioRecordTest.mp4"; //전송하고자하는 파일 이름
+    final String uploadFileName = "AudioRecordTest.mp3"; //전송하고자하는 파일 이름
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,17 +96,20 @@ public class SendAudioActivity extends FragmentActivity {
               setContentView(R.layout.activity_send_audio);
 
         messageText  = (TextView)findViewById(R.id.messageText);
+        sendingAudioImg = (ImageView)findViewById(R.id.sendingAudioImg) ;
         uploadButton = findViewById(R.id.button6);
+        intent = getIntent();
+        id = intent.getStringExtra("id");
+        Log.v("iddd",id);
 
 
-
-        messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
+        messageText.setText("목소리를 전송하시겠습니까?");
 
 
 
         /************* Php script path ****************/
 
-        upLoadServerUri = "http://172.30.1.17:8081/Podo/Camera";//서버컴퓨터의 ip주소
+        upLoadServerUri = "http://172.30.1.17:8081/Podo/Camera?id="+id;//서버컴퓨터의 ip주소
 
         uploadButton.setOnClickListener(new View.OnClickListener() {
 
@@ -122,7 +128,7 @@ public class SendAudioActivity extends FragmentActivity {
 
                                             public void run() {
 
-                                                messageText.setText("uploading started.....");
+                                                messageText.setText("전송하는 중...");
 
                             }
 
@@ -235,12 +241,22 @@ public class SendAudioActivity extends FragmentActivity {
                 if(serverResponseCode == 200){
                     runOnUiThread(new Runnable() {
                         public void run() {
-                            String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
+                           /* String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
 
-                                    +uploadFileName;
+                                    +uploadFileName;*/
 
-                            messageText.setText(msg);
-                            Toast.makeText(SendAudioActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
+                            //messageText.setText("전송이 완료되었습니다");
+
+                            Intent intent1 = new Intent(SendAudioActivity.this,MenuActivity.class);
+                            intent1.putExtra("id",id);
+                            intent1.putExtra("request",222);
+                            startActivity(intent1);
+
+                            //Toast.makeText(SendAudioActivity.this, "File Upload Complete.", Toast.LENGTH_SHORT).show();
+
+
+
+
                         }
                     });
                 }

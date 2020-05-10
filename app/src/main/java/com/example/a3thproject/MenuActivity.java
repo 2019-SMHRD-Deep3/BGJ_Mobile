@@ -65,6 +65,14 @@ public class MenuActivity extends AppCompatActivity {
             requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
 
+        if(intent.getIntExtra("request",999)==222){
+            Toast.makeText(MenuActivity.this, "목소리 등록이 완료되었습니다!", Toast.LENGTH_LONG).show();
+        }
+
+
+
+
+
         Log.v("mmm",""+intent.getStringExtra("idmm"));
         Log.v("mmm2",""+id);
         menu1.setOnClickListener(new View.OnClickListener() {
@@ -115,9 +123,16 @@ public class MenuActivity extends AppCompatActivity {
         menu2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, PickPictureActivity.class);
-                intent.putExtra("id",id);
-                startActivityForResult(intent,101);
+
+                if(!id.equals(".")){
+                    Intent intent = new Intent(MenuActivity.this, PickPictureActivity.class);
+                    intent.putExtra("id",id);
+                    startActivityForResult(intent,101);
+                }else {
+                    Toast.makeText(MenuActivity.this,
+                            "로그인 해주세요!", Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -125,8 +140,14 @@ public class MenuActivity extends AppCompatActivity {
         menu3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, AudioRecorder.class);
-                startActivityForResult(intent,101);
+                if(!id.equals(".")) {
+                    Intent intent = new Intent(MenuActivity.this, AudioRecorder.class);
+                    intent.putExtra("id", id);
+                    startActivityForResult(intent, 101);
+                }else {
+                    Toast.makeText(MenuActivity.this,
+                            "로그인 해주세요!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -160,9 +181,11 @@ public class MenuActivity extends AppCompatActivity {
             if(id.equals(".")){
                 Log.v("hhd","Login");
                 inflater.inflate(R.menu.popmenu,menu);
+
             }else{
                 Log.v("hhd","Logout");
                 inflater.inflate(R.menu.logmenu,menu);
+                id = ".";
             }
 //            inflater.inflate(R.menu.popmenu, menu); // XML의 메뉴 가져오기
 
