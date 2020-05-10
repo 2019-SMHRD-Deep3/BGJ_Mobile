@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import java.io.DataOutputStream;
 import java.io.File;
@@ -19,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class SendAudioActivity extends Fragment {
+public class SendAudioActivity extends FragmentActivity {
 
 
 

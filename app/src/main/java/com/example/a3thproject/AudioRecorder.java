@@ -168,9 +168,8 @@ public class AudioRecorder extends AppCompatActivity {
                     intent1.putExtra("id",id);
                     startActivityForResult(intent1,101);
                 }else if(recordCheck==true&&playCheck==false){
-
-                    Iplay.setImageResource(R.drawable.play_t);
                     stopAudio();
+                    Iplay.setImageResource(R.drawable.play_t);
                 }
                 recordCheck = !recordCheck;
                 release = !release;
