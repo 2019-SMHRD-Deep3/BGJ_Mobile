@@ -170,13 +170,10 @@ public class MenuActivity extends AppCompatActivity {
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-
                 switch(item.getItemId()){
                     case R.id.login:
-
                             intent = new Intent(v.getContext(), LoginActivity.class);
                             startActivity(intent);
-
                         break;
                 }
                 return false;

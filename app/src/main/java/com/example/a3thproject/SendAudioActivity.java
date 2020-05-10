@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,6 +79,7 @@ public class SendAudioActivity extends FragmentActivity {
     int serverResponseCode = 0;
     ProgressDialog dialog = null;
     String upLoadServerUri = null;
+    ImageView qna;
 
 
 
@@ -94,10 +96,11 @@ public class SendAudioActivity extends FragmentActivity {
 
         messageText  = (TextView)findViewById(R.id.messageText);
         uploadButton = findViewById(R.id.button6);
+        qna = findViewById(R.id.qna1);
 
 
 
-        messageText.setText("Uploading file path :- '/mnt/sdcard/"+uploadFileName+"'");
+        messageText.setText("전송을 시작할까요?");
 
 
 
@@ -111,21 +114,15 @@ public class SendAudioActivity extends FragmentActivity {
 
             public void onClick(View v) {
 
-
+                qna.setImageResource(R.drawable.qna1);
 
                 dialog = ProgressDialog.show(SendAudioActivity.this, "", "Uploading file...", true);
                                 new Thread(new Runnable() {
-
                                     public void run() {
-
                                         runOnUiThread(new Runnable() {
-
                                             public void run() {
-
                                                 messageText.setText("uploading started.....");
-
                             }
-
                         });
                         uploadFilePath = getExternalCacheDir().getAbsolutePath();
                         uploadFile(uploadFilePath + "/" + uploadFileName);
